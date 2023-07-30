@@ -1,0 +1,6 @@
+dependencies:
+  - name: backbase-app
+    repository: https://repo.backbase.com/backbase-charts
+    version: 0.24.1
+    alias: configserver
+    condition: configserver.enabled

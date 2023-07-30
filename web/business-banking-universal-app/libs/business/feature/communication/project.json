@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/business/feature/communication",
+  "sourceRoot": "libs/business/feature/communication/src",
+  "prefix": "bb",
+  "targets": {
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/business/feature/communication/src/test.ts",
+        "tsConfig": "libs/business/feature/communication/tsconfig.spec.json",
+        "karmaConfig": "libs/business/feature/communication/karma.conf.js",
+        "codeCoverage": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/business/feature/communication/src/**/*.ts",
+          "libs/business/feature/communication/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:business", "region:agnostic", "type:feature"]
+}

@@ -1,0 +1,109 @@
+{
+  "name": "/client-api/v1/corporate-actions/{id}",
+  "request": {
+    "url": "/client-api/v1/corporate-actions/[^/]+(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "id": "55bbeace-274e-22ec-5487-0242ac130003",
+        "electionQuantity": 11.15,
+        "electionValue": {
+          "amount": 145.1,
+          "currency": "USD"
+        },
+        "amountPerShare": {
+          "amount": 13.01,
+          "currency": "USD"
+        },
+        "instrument": {
+          "instrumentId": "6163a37e-6148-46ac-bd46-f62f563dfa7e",
+          "name": "Apples and Pears",
+          "ticker": "UAPL",
+          "exchange": "NASDAQ"
+        },
+        "portfolio": {
+          "portfolioId": "87a87cfc-81a2-4193-aafb-fa08e699ba70",
+          "name": "Long Tems Investments",
+          "alias": "My personal portfolio"
+        },
+        "corporateAction": {
+          "corporateActionId": "fjq30-de2-rjewop32n2-123423i5-rei3o490",
+          "name": "Foreign Dividend",
+          "responseDeadline": "2022-06-18",
+          "lastDayToTrade": "2022-01-10",
+          "expectedPayment": "2022-01-10",
+          "note": "Notes",
+          "decisions": [
+            {
+              "key": "1",
+              "name": "Accept",
+              "description": "Some description",
+              "isDefault": false
+            },
+            {
+              "key": "2",
+              "name": "Decline",
+              "description": "Some description",
+              "isDefault": true
+            }
+          ],
+          "recordDate": "2021-12-18",
+          "type": {
+            "key": "dividend-payout",
+            "name": "Dividend Payout",
+            "description": "A mechanism through which the company shares the profit with its shareholders. A dividend can be in the form of cash or stock, which is issued at a specified interval of time i.e. quarterly, semi-annually or yearly."
+          },
+          "additions": {
+            "someKey": "someValue"
+          }
+        },
+        "additions": {
+          "someKey": "someValue"
+        }
+      }
+    }
+  }
+}

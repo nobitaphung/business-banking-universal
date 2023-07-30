@@ -1,0 +1,124 @@
+{
+  "name": "/client-api/v1/sanctioned-currencies",
+  "request": {
+    "url": "/client-api/v1/sanctioned-currencies(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "default": {
+          "code": "GBP",
+          "decimals": 2
+        },
+        "labeled": {
+          "normal": [
+            {
+              "code": "AED",
+              "decimals": 2
+            },
+            {
+              "code": "AUD",
+              "decimals": 2
+            },
+            {
+              "code": "BRL",
+              "decimals": 2
+            },
+            {
+              "code": "CAD",
+              "decimals": 2
+            },
+            {
+              "code": "CNY",
+              "decimals": 2
+            },
+            {
+              "code": "HKD",
+              "decimals": 2
+            },
+            {
+              "code": "INR",
+              "decimals": 2
+            },
+            {
+              "code": "JPY",
+              "decimals": 0
+            },
+            {
+              "code": "JOD",
+              "decimals": 3
+            },
+            {
+              "code": "RUB",
+              "decimals": 2
+            },
+            {
+              "code": "SGD",
+              "decimals": 2
+            },
+            {
+              "code": "ZAR",
+              "decimals": 2
+            }
+          ],
+          "popular": [
+            {
+              "code": "EUR",
+              "decimals": 2
+            },
+            {
+              "code": "GBP",
+              "decimals": 2
+            },
+            {
+              "code": "USD",
+              "decimals": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}

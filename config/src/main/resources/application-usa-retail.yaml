@@ -1,0 +1,11 @@
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - configs/usa/dbs/common/pockets/one-to-many
+            - configs/usa/dbs/retail
+            - configs/usa/cxs
+            - configs/usa/common

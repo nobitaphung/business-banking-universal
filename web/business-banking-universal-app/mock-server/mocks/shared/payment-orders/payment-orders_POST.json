@@ -1,0 +1,87 @@
+{
+  "name": "/client-api/v2/payment-orders-POST",
+  "request": {
+    "url": "/client-api/v2/payment-orders(\\?.*)?$",
+    "method": "POST"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 201,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ACCEPTED"
+      }
+    },
+    "success_1": {
+      "status": 201,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ENTERED",
+        "approvalStatus": "APPROVED"
+      }
+    },
+    "success_2": {
+      "status": 202,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ENTERED"
+      }
+    },
+    "success_3": {
+      "status": 202,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ENTERED",
+        "approvalStatus": "APPROVED"
+      }
+    },
+    "success_4": {
+      "status": 202,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ENTERED",
+        "exportAllowed": true
+      }
+    }
+  }
+}

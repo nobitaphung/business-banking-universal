@@ -1,0 +1,23 @@
+global:
+  chartName: banking-config-server
+
+  app:
+    metadata:
+      tier: banking-apps
+      capability: config-server
+    image:
+      registry: harbor.backbase.eu/staging
+
+configserver:
+  enabled: true
+  app:
+    name: configserver
+    image:
+      repository: banking-config-server
+      tag: 0.0.24
+  service:
+    enabled: true
+    nameOverride: config-server
+  env:
+    "SPRING_PROFILES_ACTIVE": ""  
+    "CONFIG_BRANCH_NAME": "main"

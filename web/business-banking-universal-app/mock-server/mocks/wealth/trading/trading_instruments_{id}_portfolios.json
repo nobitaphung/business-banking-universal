@@ -1,0 +1,97 @@
+{
+  "name": "/client-api/v1/trading/instruments/{id}/portfolios",
+  "request": {
+    "url": "/client-api/v1/trading/instruments/[^/]+/portfolios(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "portfolios": [
+          {
+            "name": "Trading portfolio",
+            "alias": "My portfolio to trade",
+            "portfolioId": "68bbeace-274e-11ec-9621-0242ac130002",
+            "availableBalance": {
+              "amount": 5068.3,
+              "currency": "USD"
+            },
+            "availableBalanceInstrCurr": {
+              "amount": 14,
+              "currency": ""
+            },
+            "iban": "NL79RABO5373380466",
+            "canSell": true
+          },
+          {
+            "name": "Trading portfolio 2",
+            "alias": "My second portfolio to trade",
+            "portfolioId": "72ba1654-274e-11ec-9621-0242ac130002",
+            "availableBalance": {
+              "amount": 6174.9,
+              "currency": "USD"
+            },
+            "availableBalanceInstrCurr": {
+              "amount": 24,
+              "currency": ""
+            },
+            "iban": "NL79RABO5373380477",
+            "canSell": true
+          },
+          {
+            "name": "Trading portfolio 3",
+            "alias": "My third portfolio to trade",
+            "portfolioId": "72ba1654-274e-11ec-9621-0345ac130002",
+            "availableBalance": {
+              "amount": 674.9,
+              "currency": "USD"
+            },
+            "iban": "NL79RABO5373380321",
+            "canSell": false
+          }
+        ]
+      }
+    }
+  }
+}

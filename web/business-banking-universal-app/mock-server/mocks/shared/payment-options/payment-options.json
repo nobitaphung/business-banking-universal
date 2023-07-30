@@ -1,0 +1,88 @@
+{
+  "name": "/client-api/v1/payment-options",
+  "request": {
+    "url": "/client-api/v1/payment-options(\\?.*)?$",
+    "method": "POST"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "options": [
+          {
+            "paymentType": "US_FOREIGN_WIRE",
+            "paymentOptions": [
+              {
+                "instructionPriority": "NORM",
+                "transferFee": {
+                  "amount": "15.29",
+                  "currencyCode": "USD"
+                },
+                "chargeBearer": ["OUR", "SHA"],
+                "executionTimeFrame": {
+                  "unit": "BUSINESS_DAY",
+                  "max": 1
+                },
+                "cutOffTime": "16:00"
+              },
+              {
+                "instructionPriority": "HIGH",
+                "transferFee": {
+                  "amount": "20.00",
+                  "currencyCode": "USD"
+                },
+                "chargeBearer": ["OUR", "SHA"],
+                "executionTimeFrame": {
+                  "unit": "HOUR",
+                  "min": 1,
+                  "max": 2
+                },
+                "cutOffTime": "16:00"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

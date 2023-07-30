@@ -1,0 +1,62 @@
+{
+  "name": "/api/letter-of-credit/client-api/v1/letters-of-credit/actions",
+  "request": {
+    "url": "/api/letter-of-credit/client-api/v1/letters-of-credit/actions(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "letterOfCreditId": "1234-asdf-4567-qwert",
+          "actions": ["VIEW", "MODIFY"]
+        },
+        {
+          "letterOfCreditId": "7523-asdf-7523-qwert",
+          "actions": ["VIEW", "MODIFY", "CANCEL"]
+        }
+      ]
+    }
+  }
+}

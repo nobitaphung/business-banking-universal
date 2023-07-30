@@ -1,0 +1,569 @@
+{
+  "name": "/client-api/v2/action-recipes",
+  "request": {
+    "url": "/client-api/v2/action-recipes(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "totalCount": 20,
+        "actionRecipes": [
+          {
+            "id": "1",
+            "name": "Transaction > 100 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4691",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "2",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4691",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "3",
+            "name": "Transaction > 300 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4600",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "4",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4692",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "5",
+            "name": "Transaction > 100 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4600",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "6",
+            "name": "Rounding rule",
+            "active": false,
+            "specificationId": "3",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "payment",
+                "enabled": true
+              }
+            ],
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4691",
+            "createdOn": "2020-01-17T12:52:34.000+0000",
+            "additions": {
+              "targetArrangementId": "6cdb2224-8926-4b4d-a99f-1c9dfbbb4699"
+            }
+          },
+          {
+            "id": "7",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4692",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "8",
+            "name": "Transaction > 100 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "9",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "6cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "10",
+            "name": "Transaction > 100 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-17T12:52:34.000+0000"
+          },
+          {
+            "id": "11",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-16T12:52:34.000+0000"
+          },
+          {
+            "id": "12",
+            "name": "Transaction > 100 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "6cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-16T12:52:34.000+0000"
+          },
+          {
+            "id": "13",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-16T12:52:34.000+0000"
+          },
+          {
+            "id": "14",
+            "name": "Transaction > 100 EUR",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-16T12:52:34.000+0000"
+          },
+          {
+            "id": "15",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "6cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-01-16T12:52:34.000+0000"
+          },
+          {
+            "id": "16",
+            "name": "Rounding rule Example",
+            "active": true,
+            "specificationId": "3",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "payment",
+                "enabled": true
+              }
+            ],
+            "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4600",
+            "createdOn": "2020-01-16T12:52:34.000+0000",
+            "additions": {
+              "targetArrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4699"
+            }
+          },
+          {
+            "id": "17",
+            "name": "Payment Status Rejected",
+            "active": false,
+            "specificationId": "5",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "createdOn": "2020-01-16T12:52:34.000+0000",
+            "additions": {
+              "paymentStatuses": "rejected"
+            }
+          },
+          {
+            "id": "18",
+            "name": "Payment Status Rejected",
+            "active": true,
+            "specificationId": "5",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "createdOn": "2020-01-16T12:52:34.000+0000",
+            "additions": {
+              "paymentStatuses": "rejected"
+            }
+          },
+          {
+            "id": "19",
+            "name": "Contact Status Rejected",
+            "active": false,
+            "specificationId": "6",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": false
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "createdOn": "2020-01-16T12:52:34.000+0000",
+            "additions": {
+              "partyStatuses": "rejected"
+            }
+          },
+          {
+            "id": "20",
+            "name": "Contact Status Rejected",
+            "active": true,
+            "specificationId": "6",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "push",
+                "enabled": true
+              }
+            ],
+            "createdOn": "2020-01-16T12:52:34.000+0000",
+            "additions": {
+              "partyStatuses": "rejected"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

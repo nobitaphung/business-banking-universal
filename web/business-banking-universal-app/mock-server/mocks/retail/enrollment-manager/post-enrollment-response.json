@@ -1,0 +1,356 @@
+{
+  "name": "postEnrollmentResponse",
+  "request": {
+    "url": "/api/enrollment-manager/client-api/v1/enrollments/.*/response",
+    "method": "POST"
+  },
+  "responses": {
+    "identification": {
+      "default": true,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "IDENTIFICATION",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b744",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "twoFASelection": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFASELECTION",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendsRemaining": 4,
+          "otpChannels": [
+            {
+              "channelType": "SMS",
+              "channelValue": "xxxxxx789"
+            },
+            {
+              "channelType": "EMAIL",
+              "channelValue": "xxxxxxxyz@backbase.com"
+            }
+          ]
+        }
+      }
+    },
+    "twoFASelectionOneResend": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFASELECTION",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendsRemaining": 1,
+          "otpChannels": [
+            {
+              "channelType": "SMS",
+              "channelValue": "xxxxxx789"
+            },
+            {
+              "channelType": "EMAIL",
+              "channelValue": "xxxxxxxyz@backbase.com"
+            }
+          ]
+        }
+      }
+    },
+    "twoFAEntrySMS": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 3,
+          "attemptsRemaining": 3,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "SMS",
+            "channelValue": "xxxxxx789"
+          }
+        }
+      }
+    },
+    "twoFAEntrySmsOneAttempt": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 3,
+          "attemptsRemaining": 1,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "SMS",
+            "channelValue": "xxxxxx789"
+          }
+        }
+      }
+    },
+    "twoFAEntrySmsOneResend": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 1,
+          "attemptsRemaining": 3,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "SMS",
+            "channelValue": "xxxxxx789"
+          }
+        }
+      }
+    },
+    "twoFAEntrySmsOneAttemptOneResend": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 1,
+          "attemptsRemaining": 1,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "SMS",
+            "channelValue": "xxxxxx789"
+          }
+        }
+      }
+    },
+    "twoFAEntrySmsOutOfResends": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 0,
+          "attemptsRemaining": 2,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "SMS",
+            "channelValue": "xxxxxx789"
+          }
+        }
+      }
+    },
+    "twoFAEntryEmail": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 3,
+          "attemptsRemaining": 3,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "EMAIL",
+            "channelValue": "xxxxxxxyz@backbase.com"
+          }
+        }
+      }
+    },
+    "twoFAEntryEmailOneAttempt": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 3,
+          "attemptsRemaining": 1,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "EMAIL",
+            "channelValue": "xxxxxxxyz@backbase.com"
+          }
+        }
+      }
+    },
+    "twoFAEntryEmailOneResend": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 1,
+          "attemptsRemaining": 3,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "EMAIL",
+            "channelValue": "xxxxxxxyz@backbase.com"
+          }
+        }
+      }
+    },
+    "twoFAEntryEmailOneAttemptOneResend": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 1,
+          "attemptsRemaining": 1,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "EMAIL",
+            "channelValue": "xxxxxxxyz@backbase.com"
+          }
+        }
+      }
+    },
+    "twoFAEntryEmailOutOfResends": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "resendDelay": 4,
+          "resendsRemaining": 0,
+          "attemptsRemaining": 2,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "EMAIL",
+            "channelValue": "xxxxxxxyz@backbase.com"
+          }
+        }
+      }
+    },
+    "username": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "USERNAME",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b745",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "400IdentificationReIssue": {
+      "status": 400,
+      "data": {
+        "challengeType": "IDENTIFICATION",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b844",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "400UsernameReIssue": {
+      "status": 400,
+      "data": {
+        "challengeType": "USERNAME",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b845",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "400TwoFaEntryReIssue": {
+      "status": 400,
+      "data": {
+        "challengeType": "TWOFAENTRY",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362",
+        "challengePayload": {
+          "attemptsRemaining": 1,
+          "resendsRemaining": 1,
+          "otpSize": 6,
+          "otpChannel": {
+            "channelType": "SMS",
+            "channelValue": "xxxxxx789"
+          }
+        }
+      }
+    },
+    "500IdentificationReIssue": {
+      "status": 500,
+      "data": {
+        "challengeType": "IDENTIFICATION",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b844",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "500UsernameReIssue": {
+      "status": 500,
+      "data": {
+        "challengeType": "USERNAME",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b845",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "provisioningComplete": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "COMPLETION",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b744",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "terminalError": {
+      "status": 500
+    },
+    "terminalErrorTwoFactor": {
+      "status": 400
+    }
+  }
+}

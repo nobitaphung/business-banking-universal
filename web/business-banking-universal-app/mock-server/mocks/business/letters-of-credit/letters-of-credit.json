@@ -1,0 +1,434 @@
+{
+  "name": "/api/letter-of-credit/client-api/v1/letters-of-credit",
+  "request": {
+    "url": "/api/letter-of-credit/client-api/v1/letters-of-credit(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "uuid": "1234-asdf-4567-qwert",
+          "caseKey": "1234-asdf-4567-qwert",
+          "referenceNumber": "GA-123456789",
+          "internalReferenceNumber": "int-ref-test",
+          "creationDate": "2020-10-10T12:12:12.000Z",
+          "type": "Irrevocable",
+          "status": "Unapproved",
+          "expiryDate": "2020-12-10",
+          "expirationCity": "Amsterdam",
+          "expirationCountry": "The Netherlands",
+          "currencyCode": "EUR",
+          "totalAmount": "50000.00",
+          "amountTolerance": {
+            "positive": "2.5",
+            "negative": "2.5"
+          },
+          "additionalAmountCovered": "Additional charges - 1100 EUR",
+          "applicant": {
+            "legalEntityId": "1234567-12312-123123",
+            "legalName": "Importazioni italiane LLC",
+            "email": "test@export.com",
+            "legalAddress": {
+              "addressLine1": "Via Rutto, 23",
+              "city": "Roma",
+              "postalCode": "00187",
+              "country": "Italy"
+            }
+          },
+          "beneficiary": {
+            "legalEntityId": "1234567-12312-1475aaa",
+            "legalName": "Umbrella Netherlands BV",
+            "email": "test@umbrella.com",
+            "legalAddress": {
+              "addressLine1": "Herengraht, 21",
+              "city": "Amsterdam",
+              "postalCode": "1008DG",
+              "country": "The Netherlands"
+            }
+          },
+          "issuingBank": {
+            "legalEntityId": "b2cd61c2-23b7-4817-5a45",
+            "legalName": "Banco emisor",
+            "businessIdentifierCode": "MIDLXXGB22",
+            "email": "test@emisor.com",
+            "legalAddress": {
+              "addressLine1": "Av. de Cantabia",
+              "city": "Boadilla del Monte",
+              "postalCode": "28660",
+              "country": "Spain"
+            }
+          },
+          "advisingBank": {
+            "legalEntityId": "e2as61c2-12b5-1111-5a47",
+            "legalName": "Consigliare la Banca",
+            "businessIdentifierCode": "456789123",
+            "email": "test@consigliare.com",
+            "legalAddress": {
+              "addressLine1": "Via Irnerio, 14",
+              "city": "Bologna",
+              "postalCode": "40121",
+              "country": "Italy"
+            }
+          },
+          "confirmingBankPresence": "PRESENT",
+          "confirmingBank": {
+            "legalEntityId": "d76s6ac2-12b5-000f-5a12",
+            "legalName": "Confermando la Banca",
+            "businessIdentifierCode": "789123456",
+            "email": "test@confermando.com",
+            "legalAddress": {
+              "addressLine1": "Via Del Cestello, 46",
+              "city": "Bologna",
+              "postalCode": "40124",
+              "country": "Italy"
+            }
+          },
+          "attachments": [
+            {
+              "uuid": "550e8400-e29b-41d4-a716-446655440000",
+              "type": "PDF",
+              "name": "invoice",
+              "size": 130
+            }
+          ],
+          "settlement": {
+            "settlementBy": "Other - Mixed payment",
+            "mixedPaymentDetails": "50 percent of the total lc value payable at sight",
+            "availableWith": "Advising Bank",
+            "tenorDays": "30",
+            "tenorFromDate": "Shipment date",
+            "requiresDraft": "true",
+            "drawee": "OTHER",
+            "draweeName": "Confirming bank"
+          },
+          "shipment": {
+            "shippedFrom": "Utrecht, The Netherlands",
+            "shippedTo": "Kyiv, Ukraine",
+            "shippingPort": "Port of Rotterdam",
+            "destinationPort": "Odessa",
+            "partialShipment": "Conditional",
+            "partialShipmentCondition": "Only if cargo doesn't suit standard 20ft",
+            "transshipment": "Yes",
+            "transshipmentCondition": "Transshipment is fulfilled in Valencia",
+            "latestShipmentDate": "2021-05-23",
+            "productDescription": "Carrot",
+            "deliveryConditions": "Incoterms 2000",
+            "termOfDelivery": "DDU",
+            "deliveryPlace": "Kyiv"
+          },
+          "requestedDocuments": {
+            "commercialInvoice": {
+              "numberOfOriginals": 3,
+              "numberOfCopies": 3
+            },
+            "transportDocument": {
+              "transportMethod": "Sea transport",
+              "seaTransportDocumentDetails": {
+                "documentType": "Bill of Lading",
+                "freightMark": "Prepaid",
+                "billOfLadingIssuanceDetails": {
+                  "issuanceType": "To the order of",
+                  "issuanceDetails": "Consignee"
+                }
+              },
+              "notifyParty": {
+                "notifyPartyType": "Other",
+                "notifyPartyName": "Alice"
+              }
+            },
+            "packingListEnabled": true,
+            "packingList": {
+              "numberOfOriginals": 3,
+              "numberOfCopies": 3
+            },
+            "certificateOfOriginEnabled": true,
+            "certificateOfOrigin": {
+              "countryOfOrigin": "Ukraine",
+              "issuer": "Other",
+              "issuerName": "Consignee",
+              "numberOfOriginals": 3,
+              "numberOfCopies": 3
+            },
+            "inspectionCertificateEnabled": true,
+            "insuranceCertificateEnabled": true,
+            "insuranceCertificate": {
+              "coverage": 100,
+              "riskCoverageDetails": "Full coverage"
+            },
+            "phytosanitaryCertificateEnabled": true,
+            "legalisedCommercialDocumentsEnabled": true,
+            "billOfExchangeEnabled": true,
+            "additionalDocuments": [
+              {
+                "name": "Commercial contract",
+                "comment": "Supplement commercial contract"
+              },
+              {
+                "name": "Addendum",
+                "comment": "Addendum to the commercial contract, 2 copies"
+              }
+            ],
+            "documentConditions": {
+              "presentationPeriod": 30,
+              "presentationCondition": "Other",
+              "presentationConditionDetails": "Only originals are considered valid",
+              "additionalConditions": [
+                {
+                  "condition": "Documents should be sent by the carrier"
+                },
+                {
+                  "condition": "Shipping insurance at the shipper's expense"
+                }
+              ]
+            }
+          },
+          "feesDetails": {
+            "feePayingStrategy": "Fees split between me and beneficiary",
+            "insuranceFeePayingParty": "Beneficiary",
+            "confirmingFeePayingParty": "Me",
+            "otherFeePayingParty": "Me",
+            "bankAccount": {
+              "arrangementId": "b2ab66c1-11b7-480f-5a17",
+              "accountName": "Corporate CDU Account",
+              "bankAccountNumber": "****4784",
+              "amount": "8459.05",
+              "currencyCode": "EUR"
+            }
+          }
+        },
+        {
+          "uuid": "7523-asdf-7523-qwert",
+          "caseKey": "7523-asdf-7523-qwert",
+          "referenceNumber": "GA-123456780",
+          "internalReferenceNumber": "int-ref-test-2",
+          "creationDate": "2020-10-10T12:12:12.000Z",
+          "type": "Irrevocable",
+          "status": "Unapproved",
+          "expiryDate": "2020-12-10",
+          "expirationCity": "Amsterdam",
+          "expirationCountry": "The Netherlands",
+          "currencyCode": "EUR",
+          "totalAmount": "10000.00",
+          "amountTolerance": {
+            "positive": "2.5",
+            "negative": "2.5"
+          },
+          "additionalAmountCovered": "Additional charges - 1100 EUR",
+          "applicant": {
+            "legalEntityId": "1234567-12312-123123",
+            "legalName": "Importazioni italiane LLC",
+            "email": "test@export.com",
+            "legalAddress": {
+              "addressLine1": "Via Rutto, 23",
+              "city": "Roma",
+              "postalCode": "00187",
+              "country": "Italy"
+            }
+          },
+          "beneficiary": {
+            "legalEntityId": "1234567-12312-1475aaa",
+            "legalName": "Umbrella Netherlands BV",
+            "email": "test@umbrella.com",
+            "legalAddress": {
+              "addressLine1": "Herengraht, 21",
+              "city": "Amsterdam",
+              "postalCode": "1008DG",
+              "country": "The Netherlands"
+            }
+          },
+          "issuingBank": {
+            "legalEntityId": "b2cd61c2-23b7-4817-5a45",
+            "legalName": "Banco emisor",
+            "businessIdentifierCode": "MIDLXXGB22",
+            "email": "test@emisor.com",
+            "legalAddress": {
+              "addressLine1": "Av. de Cantabia",
+              "city": "Boadilla del Monte",
+              "postalCode": "28660",
+              "country": "Spain"
+            }
+          },
+          "advisingBank": {
+            "legalEntityId": "e2as61c2-12b5-1111-5a47",
+            "legalName": "Consigliare la Banca",
+            "businessIdentifierCode": "456789123",
+            "email": "test@consigliare.com",
+            "legalAddress": {
+              "addressLine1": "Via Irnerio, 14",
+              "city": "Bologna",
+              "postalCode": "40121",
+              "country": "Italy"
+            }
+          },
+          "confirmingBankPresence": "PRESENT",
+          "confirmingBank": {
+            "legalEntityId": "d76s6ac2-12b5-000f-5a12",
+            "legalName": "Confermando la Banca",
+            "businessIdentifierCode": "789123456",
+            "email": "test@confermando.com",
+            "legalAddress": {
+              "addressLine1": "Via Del Cestello, 46",
+              "city": "Bologna",
+              "postalCode": "40124",
+              "country": "Italy"
+            }
+          },
+          "attachments": [
+            {
+              "uuid": "550e8400-e29b-41d4-a716-446655440001",
+              "type": "PDF",
+              "name": "invoice",
+              "size": 130
+            }
+          ],
+          "settlement": {
+            "settlementBy": "Other - Mixed payment",
+            "mixedPaymentDetails": "50 percent of the total lc value payable at sight",
+            "availableWith": "Advising Bank",
+            "tenorDays": "30",
+            "tenorFromDate": "Shipment date",
+            "requiresDraft": "true",
+            "drawee": "OTHER",
+            "draweeName": "Confirming bank"
+          },
+          "shipment": {
+            "shippedFrom": "Utrecht, The Netherlands",
+            "shippedTo": "Kyiv, Ukraine",
+            "shippingPort": "Port of Rotterdam",
+            "destinationPort": "Odessa",
+            "partialShipment": "Conditional",
+            "partialShipmentCondition": "Only if cargo doesn't suit standard 20ft",
+            "transshipment": "Yes",
+            "transshipmentCondition": "Transshipment is fulfilled in Valencia",
+            "latestShipmentDate": "2021-05-23",
+            "productDescription": "Carrot",
+            "deliveryConditions": "Incoterms 2000",
+            "termOfDelivery": "DDU",
+            "deliveryPlace": "Kyiv"
+          },
+          "requestedDocuments": {
+            "commercialInvoice": {
+              "numberOfOriginals": 3,
+              "numberOfCopies": 3
+            },
+            "transportDocument": {
+              "transportMethod": "Sea transport",
+              "seaTransportDocumentDetails": {
+                "documentType": "Bill of Lading",
+                "freightMark": "Prepaid",
+                "billOfLadingIssuanceDetails": {
+                  "issuanceType": "To the order of",
+                  "issuanceDetails": "Consignee"
+                }
+              },
+              "notifyParty": {
+                "notifyPartyType": "Other",
+                "notifyPartyName": "Alice"
+              }
+            },
+            "packingListEnabled": true,
+            "packingList": {
+              "numberOfOriginals": 3,
+              "numberOfCopies": 3
+            },
+            "certificateOfOriginEnabled": true,
+            "certificateOfOrigin": {
+              "countryOfOrigin": "Ukraine",
+              "issuer": "Other",
+              "issuerName": "Consignee",
+              "numberOfOriginals": 3,
+              "numberOfCopies": 3
+            },
+            "inspectionCertificateEnabled": true,
+            "insuranceCertificateEnabled": true,
+            "insuranceCertificate": {
+              "coverage": 100,
+              "riskCoverageDetails": "Full coverage"
+            },
+            "phytosanitaryCertificateEnabled": true,
+            "legalisedCommercialDocumentsEnabled": true,
+            "billOfExchangeEnabled": true,
+            "additionalDocuments": [
+              {
+                "name": "Commercial contract",
+                "comment": "Supplement commercial contract"
+              },
+              {
+                "name": "Addendum",
+                "comment": "Addendum to the commercial contract, 2 copies"
+              }
+            ],
+            "documentConditions": {
+              "presentationPeriod": 30,
+              "presentationCondition": "Other",
+              "presentationConditionDetails": "Only originals are considered valid",
+              "additionalConditions": [
+                {
+                  "condition": "Documents should be sent by the carrier"
+                },
+                {
+                  "condition": "Shipping insurance at the shipper's expense"
+                }
+              ]
+            }
+          },
+          "feesDetails": {
+            "feePayingStrategy": "Fees split between me and beneficiary",
+            "insuranceFeePayingParty": "Beneficiary",
+            "confirmingFeePayingParty": "Me",
+            "otherFeePayingParty": "Me",
+            "bankAccount": {
+              "arrangementId": "b2ab66c1-11b7-480f-5a17",
+              "accountName": "Corporate CDU Account",
+              "bankAccountNumber": "****4784",
+              "amount": "8459.05",
+              "currencyCode": "EUR"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

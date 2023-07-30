@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      enabled: true
+      failFast: true
+      uri: http://localhost:8888

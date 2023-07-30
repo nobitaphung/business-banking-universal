@@ -1,0 +1,75 @@
+{
+  "name": "/access-control/client-api/v2/accessgroups/serviceagreements/context/users/unexposed",
+  "request": {
+    "url": "/access-control/client-api/v2/accessgroups/serviceagreements/context/users/unexposed(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "id": "01d70d09997b41cb83ea0e1db84626b3",
+          "externalId": "U0000011",
+          "fullName": "David",
+          "legalEntityId": "f63f3fc550794eed84bf848dbbba9bbd",
+          "legalEntityName": "LE-1"
+        },
+        {
+          "id": "bbf6a23536fa49029abf9c03f97a82fa",
+          "externalId": "U0000012",
+          "fullName": "Paul",
+          "legalEntityId": "f63f3fc550794eed84bf848dbbba9bbd",
+          "legalEntityName": "LE-1"
+        },
+        {
+          "id": "bc4ce9091eb04754a5a9b9422099f0fa",
+          "externalId": "U0000013",
+          "fullName": "Wayne",
+          "legalEntityId": "951293e6521940e3ae0608f93ff0b215",
+          "legalEntityName": "LE-2"
+        }
+      ]
+    }
+  }
+}

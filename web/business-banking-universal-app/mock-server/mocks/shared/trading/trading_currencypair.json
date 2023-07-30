@@ -1,0 +1,2109 @@
+{
+  "name": "/client-api/v2/trading/currencypair",
+  "request": {
+    "url": "/client-api/v2/trading/currencypair(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "pairKey": "AUD/CAD",
+          "prevClose": 1.591,
+          "open": 1.6926,
+          "isBuyEnabled": true,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/GBP",
+          "prevClose": 1.3527,
+          "open": 1.4945,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "IP530801010806",
+              "name": "Main Account",
+              "balance": {
+                "amount": "702551.42",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "AX587548273605",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "854585.83",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "HG76354827764",
+              "name": "Savings",
+              "balance": {
+                "amount": "237685.13",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "AUD/CNH",
+          "prevClose": 1.3467,
+          "open": 1.1264,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "BN814639938764",
+              "name": "Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CNH"
+              }
+            },
+            {
+              "IBAN": "KH74653987352",
+              "name": "Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CNH"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "CHF/JPY",
+          "prevClose": 1.6537,
+          "open": 1.8946,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "USD/CNH",
+          "prevClose": 1.1422,
+          "open": 1.9032,
+          "isBuyEnabled": false,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "BN814639938764",
+              "name": "Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CNH"
+              }
+            },
+            {
+              "IBAN": "KH74653987352",
+              "name": "Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CNH"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "NOK/NZD",
+          "prevClose": 1.3128,
+          "open": 1.0846,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HR849665508929",
+              "name": "Main Account",
+              "balance": {
+                "amount": "10000.00",
+                "currencyCode": "NOK"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "SEK/TRY",
+          "prevClose": 1.6971,
+          "open": 1.2112,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "FR684583630314",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "SEK"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "MXN/TRY",
+          "prevClose": 1.8517,
+          "open": 1.679,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": []
+        },
+        {
+          "pairKey": "AUD/CHF",
+          "prevClose": 1.8622,
+          "open": 1.2515,
+          "isBuyEnabled": true,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "AUD/JPY",
+          "prevClose": 1.2262,
+          "open": 1.8924,
+          "isBuyEnabled": true,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "AUD/NZD",
+          "prevClose": 1.1126,
+          "open": 1.5407,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "AUD/USD",
+          "prevClose": 1.3973,
+          "open": 1.7087,
+          "isBuyEnabled": true,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "CAD/CHF",
+          "prevClose": 1.4997,
+          "open": 1.8867,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "CAD/JPY",
+          "prevClose": 1.6318,
+          "open": 1.4413,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/AUD",
+          "prevClose": 1.7953,
+          "open": 1.1315,
+          "isBuyEnabled": false,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "IP530801010806",
+              "name": "Main Account",
+              "balance": {
+                "amount": "702551.42",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "AX587548273605",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "854585.83",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "HG76354827764",
+              "name": "Savings",
+              "balance": {
+                "amount": "237685.13",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/CAD",
+          "prevClose": 1.729,
+          "open": 1.9705,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "IP530801010806",
+              "name": "Main Account",
+              "balance": {
+                "amount": "702551.42",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "AX587548273605",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "854585.83",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "HG76354827764",
+              "name": "Savings",
+              "balance": {
+                "amount": "237685.13",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/CHF",
+          "prevClose": 1.8366,
+          "open": 1.1452,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "IP530801010806",
+              "name": "Main Account",
+              "balance": {
+                "amount": "702551.42",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "AX587548273605",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "854585.83",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "HG76354827764",
+              "name": "Savings",
+              "balance": {
+                "amount": "237685.13",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/JPY",
+          "prevClose": 1.0457,
+          "open": 1.6756,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "VO513653008917",
+              "name": "Main Account",
+              "balance": {
+                "amount": "745349.03",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "VY223164828286",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "270954.65",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/NZD",
+          "prevClose": 1.0123,
+          "open": 1.4254,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "GV466050307380",
+              "name": "Main Account",
+              "balance": {
+                "amount": "886209.62",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "DR330437502490",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "281371.28",
+                "currencyCode": "EUR"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/TRY",
+          "prevClose": 1.502,
+          "open": 1.4966,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "BT070739687682",
+              "name": "Main Account",
+              "balance": {
+                "amount": "950781.62",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "OB463642446586",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "647652.51",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "OS242740623874",
+              "name": "Savings",
+              "balance": {
+                "amount": "561396.78",
+                "currencyCode": "EUR"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "EUR/USD",
+          "prevClose": 1.8152,
+          "open": 1.7258,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "RI649944442350",
+              "name": "Main Account",
+              "balance": {
+                "amount": "552317.28",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "FW892849685711",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "892836.42",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "SA912694816846",
+              "name": "Savings",
+              "balance": {
+                "amount": "272308.56",
+                "currencyCode": "EUR"
+              }
+            },
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "GBP/AUD",
+          "prevClose": 1.6281,
+          "open": 1.7056,
+          "isBuyEnabled": false,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "TM514519240979",
+              "name": "Main Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            },
+            {
+              "IBAN": "FR119340766811",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "AUD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "GBP/CAD",
+          "prevClose": 1.8353,
+          "open": 1.1483,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "GBP/CHF",
+          "prevClose": 1.6378,
+          "open": 1.1249,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "GBP/JPY",
+          "prevClose": 1.9661,
+          "open": 1.0808,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "GBP/NZD",
+          "prevClose": 1.853,
+          "open": 1.6541,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "GBP/USD",
+          "prevClose": 1.6523,
+          "open": 1.1367,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "HG76354827764",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "87465.85",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "HJ7635487853",
+              "name": "Obligations Account",
+              "balance": {
+                "amount": "75764.64",
+                "currencyCode": "GBP"
+              }
+            },
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "NZD/CAD",
+          "prevClose": 1.1071,
+          "open": 1.1521,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "NZD/CHF",
+          "prevClose": 1.9662,
+          "open": 1.6132,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "NZD/JPY",
+          "prevClose": 1.016,
+          "open": 1.1891,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "NZD/USD",
+          "prevClose": 1.7699,
+          "open": 1.9246,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "TRY/JPY",
+          "prevClose": 1.482,
+          "open": 1.4708,
+          "isBuyEnabled": false,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "USD/CAD",
+          "prevClose": 1.0308,
+          "open": 1.2405,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MN1254740787123",
+              "name": "Savings",
+              "balance": {
+                "amount": "0",
+                "currencyCode": "CAD"
+              }
+            },
+            {
+              "IBAN": "NM763798266398",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "101734.12",
+                "currencyCode": "CAD"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "USD/CHF",
+          "prevClose": 1.8819,
+          "open": 1.2657,
+          "isBuyEnabled": false,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "GL585567292147",
+              "name": "Main Account",
+              "balance": {
+                "amount": "882502.61",
+                "currencyCode": "CHF"
+              }
+            },
+            {
+              "IBAN": "KL335015373671",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "774024.48",
+                "currencyCode": "CHF"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "USD/JPY",
+          "prevClose": 1.6529,
+          "open": 1.8276,
+          "isBuyEnabled": true,
+          "isSellEnabled": true,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "BN87636398364",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "12040.14",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "KH764368756294",
+              "name": "Account",
+              "balance": {
+                "amount": "25117.35",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB76493398753",
+              "name": "Account",
+              "balance": {
+                "amount": "50550.21",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MX74821826473",
+              "name": "Account",
+              "balance": {
+                "amount": "37382.07",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "FG62905329857",
+              "name": "Account",
+              "balance": {
+                "amount": "7520.17",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG749373193872",
+              "name": "Account",
+              "balance": {
+                "amount": "3150.57",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "NB648733184632",
+              "name": "Account",
+              "balance": {
+                "amount": "110450.87",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "TR284643185762",
+              "name": "Account",
+              "balance": {
+                "amount": "40760.67",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "MN784623198361",
+              "name": "Account",
+              "balance": {
+                "amount": "80120.45",
+                "currencyCode": "JPY"
+              }
+            },
+            {
+              "IBAN": "HG759833192745",
+              "name": "Account",
+              "balance": {
+                "amount": "150.11",
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        {
+          "pairKey": "USD/NOK",
+          "prevClose": 1.3125,
+          "open": 1.6162,
+          "isBuyEnabled": true,
+          "isSellEnabled": false,
+          "isFavorite": false,
+          "accounts": [
+            {
+              "IBAN": "NB647830587564",
+              "name": "Main Account",
+              "balance": {
+                "amount": "16492.43",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "TM230301954201",
+              "name": "Bonds Account",
+              "balance": {
+                "amount": "175616.71",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "KL461859983394",
+              "name": "Savings",
+              "balance": {
+                "amount": "528335.64",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "MX3897549998473",
+              "name": "Account",
+              "balance": {
+                "amount": "1387.63",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "FR294629948721",
+              "name": "Account",
+              "balance": {
+                "amount": "335.24",
+                "currencyCode": "USD"
+              }
+            },
+            {
+              "IBAN": "HR849665508929",
+              "name": "Main Account",
+              "balance": {
+                "amount": "10000.00",
+                "currencyCode": "NOK"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

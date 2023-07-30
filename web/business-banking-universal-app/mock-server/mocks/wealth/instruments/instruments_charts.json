@@ -1,0 +1,272 @@
+{
+  "name": "/client-api/v1/positions/{positionID}/instruments/charts",
+  "request": {
+    "url": "/client-api/v1/positions/[^/]+/instruments/charts(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "chartData": [
+          {
+            "date": "2020-01-01",
+            "price": 125.01,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-02-01",
+            "price": 129.04,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-03-01",
+            "price": 134.18,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-04-01",
+            "price": 131.4,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-05-01",
+            "price": 120.88,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-06-01",
+            "price": 112.82,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-07-01",
+            "price": 115.54,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-08-01",
+            "price": 110.34,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-09-01",
+            "price": 106.84,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-10-01",
+            "price": 108.22,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-11-01",
+            "price": 116.5,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2020-12-01",
+            "price": 114.97,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-01-01",
+            "price": 124.4,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-02-01",
+            "price": 120.71,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-03-01",
+            "price": 116.6,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-04-01",
+            "price": 111.2,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-05-01",
+            "price": 115.32,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-06-01",
+            "price": 108.77,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-07-01",
+            "price": 114.95,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-08-01",
+            "price": 119.03,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-09-01",
+            "price": 118.69,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-10-01",
+            "price": 116.32,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-11-01",
+            "price": 115.97,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2021-12-01",
+            "price": 119.49,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-01-01",
+            "price": 118.64,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-02-01",
+            "price": 113.85,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-03-01",
+            "price": 115.17,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-04-01",
+            "price": 116.03,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-05-01",
+            "price": 116.59,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-06-01",
+            "price": 119.05,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-07-01",
+            "price": 122.72,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-08-01",
+            "price": 123.08,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-09-01",
+            "price": 122.94,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-10-01",
+            "price": 122.25,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-11-01",
+            "price": 123.75,
+            "currency": "USD",
+            "type": "closing"
+          },
+          {
+            "date": "2022-12-01",
+            "price": 124.3,
+            "currency": "USD",
+            "type": "closing"
+          }
+        ]
+      }
+    }
+  }
+}

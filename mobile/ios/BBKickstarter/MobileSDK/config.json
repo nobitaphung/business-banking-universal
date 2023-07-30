@@ -1,0 +1,23 @@
+{
+  "development": {
+    "debugEnable": true
+  },
+  "backbase": {
+    "serverURL": "https://example.url/",
+    "experience": "",
+    "localModelPath": "$(contextRoot)/conf/localModel.json",
+    "version": "6.2.3.1",
+    "identity": {
+      "baseURL": "https://identity.example.url/",
+      "clientId": "mobile-client",
+      "realm": "backbase",
+      "applicationKey": "business"
+    }
+  },
+  "security": {
+    "allowedDomains": [
+      "*"
+    ]
+  },
+  "bankTimeZone": "Europe/Lisbon"
+}

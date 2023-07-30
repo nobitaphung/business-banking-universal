@@ -1,0 +1,80 @@
+{
+  "name": "/client-api/v2/bill-pay/payments/recurring/{id}-GET",
+  "request": {
+    "url": "/client-api/v2/bill-pay/payments/recurring/[^/]+(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "payment": {
+          "id": "8a9483495f058d2f015f058d366a003c",
+          "payeeID": "0005",
+          "payeeName": "Citibank",
+          "payeeAccountNumber": "100000001",
+          "payeeElectronic": true,
+          "amount": {
+            "amount": "100.99",
+            "currencyCode": "USD"
+          },
+          "paymentDate": "2019-02-22",
+          "paymentAccount": {
+            "id": "1",
+            "accountNumber": "000000001",
+            "routingNumber": "000000011",
+            "accountType": "CHECKING_ACCOUNT"
+          },
+          "paymentMemo": "Here is some money",
+          "recurring": true,
+          "frequency": "MONTHLY",
+          "numberOfInstances": 2,
+          "paymentScheduledAlert": true,
+          "paymentSentAlert": true,
+          "modelExpirationAlert": true,
+          "status": "PENDING"
+        }
+      }
+    }
+  }
+}

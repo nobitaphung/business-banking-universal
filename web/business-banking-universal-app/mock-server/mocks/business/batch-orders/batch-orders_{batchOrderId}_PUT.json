@@ -1,0 +1,109 @@
+{
+  "name": "/client-api/v2/batch-orders/{batchOrderId}-PUT",
+  "request": {
+    "url": "/client-api/v2/batch-orders/[^/]+(\\?.*)?$",
+    "method": "PUT"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "id": "f7e4f0bf-6080-46be-bd5d-7dad2b054495",
+        "name": "Employee salaries",
+        "type": "SEPACT",
+        "creditDebitMixedIndicator": "CREDIT",
+        "status": "CANCELLED",
+        "totalTransactionsCount": 120,
+        "totalCreditTransactionsCount": 120,
+        "totalInstructedAmount": {
+          "amount": "322038.00",
+          "currencyCode": "EUR"
+        },
+        "totalCreditInstructedAmount": {
+          "amount": "322038.00",
+          "currencyCode": "EUR"
+        },
+        "account": {
+          "name": "Main Current",
+          "identification": {
+            "identification": "NL54ABNA2366058993",
+            "schemeName": "IBAN"
+          }
+        },
+        "requestedExecutionDate": "2012-01-01",
+        "fileName": "salaries-2020-01.csv",
+        "userFullName": "John Davis",
+        "uploadCompletedAt": "2019-12-31T23:55:31Z",
+        "canDelete": false,
+        "canCancel": false,
+        "approval": {
+          "id": "ac150312-1bec-4075-934f-23600886cb4e",
+          "userId": "64350fcf-ddd1-4cdc-b725-f6c76f89f7c2",
+          "externalUserId": "jdavis",
+          "userFullName": "John Davis",
+          "serviceAgreementId": "c94dc22f-381f-4127-a9f2-db2f5a314e41",
+          "itemId": "f7e4f0bf-6080-46be-bd5d-7dad2b054495",
+          "dataAccessItemId": "e8daae6b-0276-4533-b64d-e3c73afb47a0",
+          "resource": "Batches",
+          "function": "SEPACT",
+          "status": "PENDING",
+          "createdAt": "2019-12-31T23:56:08Z",
+          "records": [
+            {
+              "id": "9e61d96d-fea3-44a4-8903-88d95eb266a8",
+              "userId": "f34feccc-0d0d-4365-982b-d6d1779e5aaf",
+              "externalUserId": "twilliams",
+              "userFullName": "Tobi Williams",
+              "approvalTypeId": "16f655f3-3abf-438d-8351-2c667d5a3c86",
+              "status": "APPROVED",
+              "createdAt": "2019-12-31T23:57:20Z"
+            }
+          ],
+          "canApprove": false,
+          "canReject": false,
+          "finalApprover": false
+        }
+      }
+    }
+  }
+}

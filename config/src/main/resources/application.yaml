@@ -1,0 +1,31 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    root: INFO
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${config.uri}
+          default-label: ${config.branch.name}
+          username: ${config.credentials.username}
+          password: ${config.credentials.password}
+          clone-on-start: true
+          timeout: ${config.timeout}
+          refresh-rate: ${config.refresh-rate}
+
+config:
+  branch:
+    name: main
+  credentials:
+    username: BACKBASE_CONFIG_USER
+    password: BACKBASE_CONFIG_PASSWORD
+  refresh-rate: 30
+  timeout: 30
+  uri: https://github.com/backbase-rnd/pa-banking-apps-configs.git

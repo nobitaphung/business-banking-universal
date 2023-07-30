@@ -1,0 +1,31 @@
+{
+  "name": "getEnrollmentStatus",
+  "request": {
+    "url": "/api/enrollment-manager/client-api/v1/enrollments/.*/provisioning/status",
+    "method": "GET"
+  },
+  "responses": {
+    "started": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "provisioningStatus": "STARTED"
+      }
+    },
+    "complete": {
+      "status": 200,
+      "data": {
+        "provisioningStatus": "COMPLETE"
+      }
+    },
+    "failed": {
+      "status": 200,
+      "data": {
+        "provisioningStatus": "FAILED"
+      }
+    },
+    "terminalError": {
+      "status": 500
+    }
+  }
+}

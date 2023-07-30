@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@backbase/business-e2e": ["libs/business-e2e/src/index.ts"],
+      "@backbase/business/feature/communication": ["libs/business/feature/communication/src/index.ts"],
+      "@backbase/business/feature/layout": ["libs/business/feature/layout/src/index.ts"],
+      "@backbase/business/update-plugin": ["libs/plugins/business/update-plugin/src/index.ts"],
+      "@backbase/shared/feature/auth": ["libs/shared/feature/auth/src/index.ts"],
+      "@backbase/shared/feature/routable-modal": ["libs/shared/feature/routable-modal/src/index.ts"],
+      "@backbase/shared/feature/user-context": ["libs/shared/feature/user-context/src/index.ts"],
+      "@backbase/shared/util/app-core": ["libs/shared/util/app-core/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

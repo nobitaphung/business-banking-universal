@@ -1,0 +1,11 @@
+---
+### Live profile
+spring:
+  profiles: live
+  application:
+    name: loan
+  datasource:
+    driver-class-name: ${spring.datasource.driver-class-name}
+    username: ${spring.datasource.username.loan}
+    password: ${spring.datasource.password.loan}
+    url: ${spring.datasource.url.loan}

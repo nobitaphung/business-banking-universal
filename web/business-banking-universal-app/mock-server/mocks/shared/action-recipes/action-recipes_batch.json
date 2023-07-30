@@ -1,0 +1,109 @@
+{
+  "name": "/client-api/v2/action-recipes/batch",
+  "request": {
+    "url": "/client-api/v2/action-recipes/batch(\\?.*)?$",
+    "method": "PUT"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "actionRecipes": [
+          {
+            "id": "1",
+            "name": "TransactionExecuted for User",
+            "active": true,
+            "specificationId": "1",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": true
+              },
+              {
+                "type": "email",
+                "enabled": false
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              }
+            ],
+            "amount": "100",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-03-18T11:36:02.000+0000",
+            "recurrence": {
+              "daysOfWeek": ["MON", "FRI"],
+              "hoursOfDay": ["9", "17"],
+              "quartzExpression": "0 0 9,17 ? * MON,FRI *"
+            }
+          },
+          {
+            "id": "2",
+            "name": "Account Low Balance < 1000 EUR",
+            "active": true,
+            "specificationId": "4",
+            "userId": "kjordan",
+            "actions": [
+              {
+                "type": "notification",
+                "enabled": false
+              },
+              {
+                "type": "email",
+                "enabled": true
+              },
+              {
+                "type": "sms",
+                "enabled": false
+              }
+            ],
+            "amount": "300",
+            "arrangementId": "6cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+            "createdOn": "2020-03-18T11:36:02.000+0000"
+          }
+        ]
+      }
+    }
+  }
+}

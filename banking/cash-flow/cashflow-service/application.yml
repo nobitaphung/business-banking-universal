@@ -1,0 +1,13 @@
+---
+### Live profile
+spring:
+  profiles: live
+  application:
+    name: cashflow-service
+  datasource:
+    driver-class-name: ${spring.datasource.driver-class-name}
+    username: ${spring.datasource.username.cashflow-service}
+    password: ${spring.datasource.password.cashflow-service}
+    url: ${spring.datasource.url.cashflow-service}
+  liquibase:
+    enabled: false

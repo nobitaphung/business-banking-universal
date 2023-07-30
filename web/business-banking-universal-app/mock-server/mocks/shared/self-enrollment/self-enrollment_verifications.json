@@ -1,0 +1,150 @@
+{
+  "name": "/client-api/v2/verifications",
+  "request": {
+    "url": "/client-api/v2/verifications(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "question": {
+            "id": "12ghr44356-54mpkm65",
+            "text": "When did you open your Loan account?"
+          },
+          "answers": [
+            {
+              "id": "wrghr44356-54mpkm65",
+              "text": "January 2017"
+            },
+            {
+              "id": "ds-0h-903285hb6",
+              "text": "March 2017"
+            },
+            {
+              "id": "34bkbdfs89sdfnj",
+              "text": "July 2017"
+            },
+            {
+              "id": "123-3456-nkbjhbdf",
+              "text": "None of the above"
+            }
+          ]
+        },
+        {
+          "question": {
+            "id": "12ghr44356-54mpkerwfvd5",
+            "text": "What state was your SSN issued in?"
+          },
+          "answers": [
+            {
+              "id": "123kbbb43500fds",
+              "text": "New York"
+            },
+            {
+              "id": "453-65njb453-45657",
+              "text": "Virginia"
+            },
+            {
+              "id": "csgdf-35436njgf",
+              "text": "Missouri"
+            },
+            {
+              "id": "aaa-23454363jb634",
+              "text": "None of the above"
+            }
+          ]
+        },
+        {
+          "question": {
+            "id": "18hgdd8756-54botdf8876",
+            "text": "In 2017, your Car Loan was approved by which bank?"
+          },
+          "answers": [
+            {
+              "id": "1mlfjur-i094s",
+              "text": "Bank of America"
+            },
+            {
+              "id": "473-65iiktnd93-433457",
+              "text": "Wells Fargo"
+            },
+            {
+              "id": "cujhf-356657ytjgf",
+              "text": "Chase"
+            },
+            {
+              "id": "abb-236678435jb634",
+              "text": "None of the above"
+            }
+          ]
+        },
+        {
+          "question": {
+            "id": "109jjhbft6-590-ouhgj345",
+            "text": "Which of the following cities has a current or former association to you?"
+          },
+          "answers": [
+            {
+              "id": "19874yhrgsvdr5",
+              "text": "Houston"
+            },
+            {
+              "id": "4577-8576ijuth-45659",
+              "text": "Los Angeles"
+            },
+            {
+              "id": "cascadf-3554r66t-uu",
+              "text": "Chicago"
+            },
+            {
+              "id": "aga-264547789-jb634",
+              "text": "None of the above"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

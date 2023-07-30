@@ -1,0 +1,38 @@
+{
+  "root": "apps/business-universal-e2e",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@dot-build/serve-and-run-angular:run",
+      "options": {
+        "devServerTarget": "business-universal:serve",
+        "command": "npx",
+        "args": [
+          "playwright",
+          "test",
+          "--config=apps/business-universal-e2e/playwright.config.ts --project=chromium-un-s"
+        ]
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "e2e-no-dev": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx playwright test --config=apps/business-universal-e2e/playwright.config.ts --project=chromium-un-s"
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/business-universal-e2e/**/*.ts"]
+      }
+    }
+  },
+  "implicitDependencies": ["business-universal"],
+  "tags": ["scope:business", "region:universal", "type:app"]
+}

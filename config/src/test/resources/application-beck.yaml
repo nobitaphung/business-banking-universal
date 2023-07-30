@@ -1,0 +1,102 @@
+
+spring:
+  cloud:
+    config:
+      server:
+        composite:
+        - type: git
+          uri: ${beck.config.uri}
+          username: ${config.credentials.username}
+          password: ${config.credentials.password}
+          default-label: ${beck.config.branch}
+          search-paths:
+            - applications/{application}
+
+beck:
+  config:
+    branch: feature/PRSUM-7385-config-server
+    uri: https://github.com/backbase-rnd/sdlc-beck-cloud-configs.git
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: usa-business-banking
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: arrangement-manager
+      source-count: 2
+    beck-case0:
+      application: account-mock
+      source-count: 1
+      expected-values:
+        backbase:
+          communication:
+            http:
+              add-sleuth-headers: true
+    beck-case1:
+      application: arrangement-manager
+      profiles:
+        - static-kinds
+      source-count: 3
+      expected-values:
+        backbase:
+          arrangement:
+            product-kinds:
+              use-db: false
+      unexpected-keys:
+        backbase:
+          multi-tenancy:
+            enabled: true
+    beck-case2:
+      application: arrangement-manager
+      profiles:
+        - static-kinds
+        - multitenancy
+      source-count: 5
+      expected-values:
+        backbase:
+          arrangement:
+            product-kinds:
+              use-db: false
+          multi-tenancy:
+            enabled: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: usa-retail
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: arrangement-manager
+      source-count: 1
+      expected-values:
+        backbase:
+          arrangement:
+            product-kinds:
+              use-db: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: usa-retail-pockets-one-to-one
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: arrangement-manager
+      source-count: 1
+      expected-values:
+        backbase:
+          arrangement:
+            product-kinds:
+              use-db: true

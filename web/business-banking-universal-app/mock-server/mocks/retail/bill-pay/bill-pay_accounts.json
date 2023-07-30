@@ -1,0 +1,82 @@
+{
+  "name": "/client-api/v2/bill-pay/accounts",
+  "request": {
+    "url": "/client-api/v2/bill-pay/accounts(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "accounts": [
+          {
+            "id": "1",
+            "accountNumber": "000000001",
+            "accountNickName": "Joint Account",
+            "accountType": "CHECKING_ACCOUNT",
+            "routingNumber": "000000011",
+            "accountBalance": {
+              "amount": "1000.01",
+              "currencyCode": "USD"
+            }
+          },
+          {
+            "id": "2",
+            "accountNumber": "000000002",
+            "accountType": "SAVINGS_ACCOUNT",
+            "routingNumber": "000000022"
+          },
+          {
+            "accountNumber": "000000003",
+            "accountType": "CHECKING_ACCOUNT",
+            "routingNumber": "000000033",
+            "accountBalance": {
+              "amount": "1000.03",
+              "currencyCode": "USD"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

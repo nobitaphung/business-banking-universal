@@ -1,0 +1,10 @@
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - configs/usa/dbs/business-banking
+            - configs/usa/iam/business-banking
+            - configs/usa/common

@@ -1,0 +1,84 @@
+{
+  "name": "/client-api/v2/bill-pay/payments-POST",
+  "request": {
+    "url": "/client-api/v2/bill-pay/payments(\\?.*)?$",
+    "method": "POST"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 201,
+      "data": {
+        "payments": [
+          {
+            "payeeID": "payee1",
+            "paymentID": "payment1",
+            "errors": []
+          },
+          {
+            "payeeID": "payee2",
+            "paymentID": "payment2",
+            "errors": []
+          },
+          {
+            "payeeID": "payee3",
+            "errors": [
+              {
+                "message": "Invalid next payment date",
+                "key": "billpay.api.invalidNextPaymentDate"
+              },
+              {
+                "message": "Payment already exists",
+                "key": "billpay.api.paymentAlreadyExists"
+              }
+            ]
+          },
+          {
+            "payeeID": "payee4",
+            "paymentID": "payment4",
+            "errors": []
+          }
+        ]
+      }
+    }
+  }
+}

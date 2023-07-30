@@ -1,0 +1,53 @@
+<div
+  class="bb-layout bb-layout--vertical-nav"
+  [ngClass]="{
+    'bb-layout--nav-expanded': layoutService.navigationExpanded$ | async,
+    'bb-layout--high-resolution-view': layoutService.isHighResolutionView$ | async
+  }"
+>
+  <!-- Impersonation banner -->
+  <bb-impersonation-banner (stopImpersonation)="logout()"></bb-impersonation-banner>
+
+  <!-- Top Bar Area -->
+  <bb-top-bar-menu
+    [notificationsAllowedRoutes]="notificationsAllowedRoutes"
+    [displayNotificationSettingsButton]="displayNotificationSettingsButton"
+  ></bb-top-bar-menu>
+
+  <!-- Backdrop Area -->
+  <div class="bb-layout__nav-backdrop" (click)="layoutService.toggleNav()"></div>
+
+  <!-- Main Content Area -->
+  <div class="bb-layout__main">
+    <div class="bb-layout__sidebar">
+      <button
+        class="bb-layout__sidebar-toggler"
+        aria-label="Toggle sidebar"
+        i18n-aria-label="Sidebar Toggler|Button for toggling sidebar state@@bb-layout.sidebar_toggler"
+        (click)="layoutService.toggleNav()"
+      >
+        <span class="bb-icon"></span>
+      </button>
+
+      <!-- Main Navigation -->
+      <ng-content select="bb-navigation-menu"></ng-content>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="bb-page-layout__content">
+      <div class="bb-page-layout__container container-fluid">
+        <!--Header Area-->
+        <div class="bb-layout__main-content-header" aria-live="polite"></div>
+
+        <!-- Main Content Area -->
+        <div class="bb-layout__main-content-area" role="main">
+          <bb-notifications-popups
+            [pollingInterval]="30"
+            [allowedRoutes]="notificationsAllowedRoutes"
+          ></bb-notifications-popups>
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

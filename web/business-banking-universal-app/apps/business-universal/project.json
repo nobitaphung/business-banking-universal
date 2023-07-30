@@ -1,0 +1,157 @@
+{
+  "projectType": "application",
+  "root": "apps/business-universal",
+  "sourceRoot": "apps/business-universal/src",
+  "prefix": "bb",
+  "i18n": {
+    "locales": {
+      "en": "apps/business-universal/src/locale/messages.en.xlf",
+      "es": "apps/business-universal/src/locale/messages.es.xlf"
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/business-universal",
+        "index": "apps/business-universal/src/index.html",
+        "main": "apps/business-universal/src/main.ts",
+        "polyfills": "apps/business-universal/src/polyfills.ts",
+        "tsConfig": "apps/business-universal/tsconfig.app.json",
+        "aot": true,
+        "assets": [
+          {
+            "input": "libs/business/assets/src",
+            "glob": "favicon.ico",
+            "output": "."
+          },
+          {
+            "input": "libs/business/assets/src/assets",
+            "glob": "**/*",
+            "output": "assets"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@backbase/cards-management-journey-ui/assets",
+            "output": "assets/cards-management-journey"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@backbase/places-journey-ang/assets",
+            "output": "assets/bb-places-journey-ang"
+          }
+        ],
+        "styles": ["apps/business-universal/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/business-universal/src/environments/environment.ts",
+              "with": "apps/business-universal/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "localize": true,
+          "baseHref": "${BASE_HREF::-1}",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "6.65mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ]
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "business-universal:build:production"
+        },
+        "development": {
+          "browserTarget": "business-universal:build:development",
+          "proxyConfig": "proxy.env.conf.js"
+        },
+        "mocks": {
+          "browserTarget": "business-universal:build:development",
+          "proxyConfig": "proxy.mocks.conf.js"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "business-universal:build"
+      }
+    },
+    "xi18n": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS=--max-old-space-size=4096 ng extract-i18n business-universal --output-path=apps/business-universal/src/locale && xliffmerge --profile=apps/business-universal/src/xliffmerge.json en es"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/business-universal/src/**/*.ts", "apps/business-universal/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/business-universal/src/test.ts",
+        "tsConfig": "apps/business-universal/tsconfig.spec.json",
+        "karmaConfig": "apps/business-universal/karma.conf.js",
+        "polyfills": "apps/business-universal/src/polyfills.ts",
+        "styles": [],
+        "scripts": [],
+        "assets": [],
+        "codeCoverage": true
+      }
+    },
+    "build-docker": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "docker build -t {args.dockerRegistry}/business-universal:{args.imageTag} --build-arg application_name=business-universal ."
+      }
+    },
+    "push-docker": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "docker push {args.dockerRegistry}/business-universal:{args.imageTag}"
+      }
+    },
+    "remove-docker": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "docker rmi {args.dockerRegistry}/business-universal:{args.imageTag} --force"
+      }
+    }
+  },
+  "tags": ["scope:business", "region:universal", "type:app"],
+  "implicitDependencies": ["business-assets"]
+}

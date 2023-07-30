@@ -1,0 +1,346 @@
+{
+  "name": "/client-api/v2/portfoliosummary/{portfolioId}/allocations",
+  "request": {
+    "url": "/client-api/v2/portfoliosummary/[^/]+/allocations(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "allocations": [
+          {
+            "name": "Africa",
+            "allocationPct": 45,
+            "valuation": {
+              "amount": "122189.37",
+              "currencyCode": "EUR"
+            },
+            "allocations": [
+              {
+                "name": "Angola",
+                "allocationPct": 3.67,
+                "valuation": {
+                  "amount": "2414.19",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Burkina Faso",
+                "allocationPct": 30.77,
+                "valuation": {
+                  "amount": "20241.01",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Burundi",
+                "allocationPct": 20.6,
+                "valuation": {
+                  "amount": "13551.01",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Benin",
+                "allocationPct": 44.3,
+                "valuation": {
+                  "amount": "29141.26",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Botswana",
+                "allocationPct": 35.83,
+                "valuation": {
+                  "amount": "23569.56",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Congo",
+                "allocationPct": 3.36,
+                "valuation": {
+                  "amount": "2210.26",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Cameroon",
+                "allocationPct": 29.27,
+                "valuation": {
+                  "amount": "19254.28",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Cape Verde",
+                "allocationPct": 17.95,
+                "valuation": {
+                  "amount": "11807.80",
+                  "currencyCode": "EUR"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Asia & Pacific",
+            "allocationPct": 23,
+            "valuation": {
+              "amount": "51371.36",
+              "currencyCode": "EUR"
+            },
+            "allocations": [
+              {
+                "name": "Afghanistan",
+                "allocationPct": 15.87,
+                "valuation": {
+                  "amount": "3223.28",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Antarctica",
+                "allocationPct": 29.96,
+                "valuation": {
+                  "amount": "6085.03",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Australia",
+                "allocationPct": 49.58,
+                "valuation": {
+                  "amount": "10069.95",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Bangladesh",
+                "allocationPct": 28.37,
+                "valuation": {
+                  "amount": "5762.09",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "China",
+                "allocationPct": 49.19,
+                "valuation": {
+                  "amount": "9990.74",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Japan",
+                "allocationPct": 32.89,
+                "valuation": {
+                  "amount": "6680.13",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Cambodia",
+                "allocationPct": 17.14,
+                "valuation": {
+                  "amount": "3481.22",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Kazakhstan",
+                "allocationPct": 29.93,
+                "valuation": {
+                  "amount": "6078.93",
+                  "currencyCode": "EUR"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Europe",
+            "allocationPct": 8,
+            "valuation": {
+              "amount": "36221.12",
+              "currencyCode": "EUR"
+            },
+            "allocations": [
+              {
+                "name": "Austria",
+                "allocationPct": 25.93,
+                "valuation": {
+                  "amount": "9256.07",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Belgium",
+                "allocationPct": 25.7,
+                "valuation": {
+                  "amount": "9173.97",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Switzerland",
+                "allocationPct": 34.66,
+                "valuation": {
+                  "amount": "12372.37",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Germany",
+                "allocationPct": 21.84,
+                "valuation": {
+                  "amount": "7796.09",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Estonia",
+                "allocationPct": 6.66,
+                "valuation": {
+                  "amount": "2377.38",
+                  "currencyCode": "EUR"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Latin America",
+            "allocationPct": 7,
+            "valuation": {
+              "amount": "142739.91",
+              "currencyCode": "EUR"
+            },
+            "allocations": [
+              {
+                "name": "Anguilla",
+                "allocationPct": 18.47,
+                "valuation": {
+                  "amount": "51281.97",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Argentina",
+                "allocationPct": 3.23,
+                "valuation": {
+                  "amount": "8968.10",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Barbados",
+                "allocationPct": 22.28,
+                "valuation": {
+                  "amount": "61860.44",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Bolivia",
+                "allocationPct": 7.31,
+                "valuation": {
+                  "amount": "20296.22",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Brazil",
+                "allocationPct": 45.64,
+                "valuation": {
+                  "amount": "126719.50",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Belize",
+                "allocationPct": 12.5,
+                "valuation": {
+                  "amount": "34706.26",
+                  "currencyCode": "EUR"
+                }
+              }
+            ]
+          },
+          {
+            "name": "North America",
+            "allocationPct": 5,
+            "valuation": {
+              "amount": "36221.12",
+              "currencyCode": "EUR"
+            },
+            "allocations": [
+              {
+                "name": "Canada",
+                "allocationPct": 25.93,
+                "valuation": {
+                  "amount": "9256.07",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "United States",
+                "allocationPct": 25.7,
+                "valuation": {
+                  "amount": "9173.97",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "name": "Saint Pierre and Miquelon",
+                "allocationPct": 34.66,
+                "valuation": {
+                  "amount": "12372.37",
+                  "currencyCode": "EUR"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "root": "libs/business-e2e",
+  "sourceRoot": "libs/business-e2e/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/business-e2e/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["scope:shared", "region:agnostic", "type:util"]
+}

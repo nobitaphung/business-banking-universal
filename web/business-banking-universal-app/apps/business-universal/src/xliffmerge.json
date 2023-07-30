@@ -1,0 +1,8 @@
+{
+  "xliffmergeOptions": {
+    "apikey": "",
+    "autotranslate": [],
+    "srcDir": "apps/business-universal/src/locale",
+    "genDir": "apps/business-universal/src/locale"
+  }
+}

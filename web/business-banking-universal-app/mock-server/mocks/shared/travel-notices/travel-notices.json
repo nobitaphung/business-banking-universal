@@ -1,0 +1,121 @@
+{
+  "name": "/client-api/v2/travel-notices",
+  "request": {
+    "url": "/client-api/v2/travel-notices(\\?.*)?$",
+    "method": "POST"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "id": "sara-travel-notice-1",
+        "cardIds": ["sara-card-1"],
+        "departureDate": "2020-05-06",
+        "arrivalDate": "2020-05-10",
+        "destinations": [
+          {
+            "country": "USA",
+            "region": "US-TX"
+          }
+        ]
+      }
+    },
+    "success_1": {
+      "status": 200,
+      "data": {
+        "$ref": "#/paths/~1client-api~1v2~1travel-notices/post/requestBody/content/application~1json/example"
+      }
+    },
+    "success_2": {
+      "status": 200,
+      "data": {
+        "id": "john-travel-notice-1",
+        "cardIds": ["john-card-1", "john-card-2"],
+        "departureDate": "2020-01-09",
+        "arrivalDate": "2020-01-18",
+        "destinations": [
+          {
+            "country": "NL"
+          }
+        ],
+        "contact": {
+          "phoneNumber": "+1 646 432 3000"
+        }
+      }
+    },
+    "success_3": {
+      "status": 200,
+      "data": {
+        "additions": {
+          "key": "additions"
+        },
+        "destinations": [
+          {
+            "country": "country",
+            "additions": {
+              "key": "additions"
+            },
+            "region": "region"
+          },
+          {
+            "country": "country",
+            "additions": {
+              "key": "additions"
+            },
+            "region": "region"
+          }
+        ],
+        "contact": {
+          "phoneNumber": "phoneNumber",
+          "additions": {
+            "key": "additions"
+          }
+        },
+        "id": "id",
+        "departureDate": "departureDate",
+        "cardIds": ["cardIds", "cardIds"],
+        "arrivalDate": "arrivalDate"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "baseUrl": "http://localhost:4200/",
+  "baasToken": "prdl-bus-un-s-f3623dc0-eed5-44b3-ad67-f6b5b24c0211",
+  "users": {
+    "userWithSingleContext": {
+      "username": "robin_green",
+      "password": "robin_green",
+      "fullName": "Robin Green",
+      "userContext": "Green Bicycle Factory",
+      "defaultContext": "Green Bicycle Factory"
+    },
+    "userWithMultipleContexts": {
+      "username": "",
+      "password": "",
+      "fullName": "",
+      "defaultContext": ""
+    }
+  }
+}

@@ -1,0 +1,186 @@
+<div class="bb-layout__topbar bb-layout__topbar--sm" role="banner">
+  <!-- Skip to content -->
+  <button
+    i18n-aria-label="
+      Move focus to beginning of content|Value for aria-label saying that this button will move the focus to the
+      beginning of the content
+    "
+    aria-label="skip to content"
+    class="bb-layout__skip-to-content"
+    (click)="focusHandler.skipToContent($event)"
+    i18n="
+      Skip to content|Text to enforce the user to click to put focus on the main content
+      section@@bb-layout.topbar.skip_to_content.button"
+  >
+    Skip to Content
+  </button>
+
+  <!-- Hamburger -->
+  <button
+    [attr.aria-expanded]="layoutService.navigationExpanded$ | async"
+    (click)="layoutService.toggleNav()"
+    class="bb-layout__nav-expand-marker"
+    aria-label="Toggle sidebar"
+    i18n-aria-label="Sidebar Toggler|Button for toggling sidebar state@@bb-layout.sidebar_toggler"
+  >
+    <span class="bb-icon"></span>
+  </button>
+
+  <!-- Logo -->
+  <div class="bb-layout__branding-area">
+    <bb-logo-ui type="emblem"></bb-logo-ui>
+  </div>
+
+  <!-- Right Topbar Area -->
+  <div class="bb-layout__topbar-content-area">
+    <div>
+      <bb-progress-tracker
+        [eventList]="eventArr"
+        (cancel)="cancelTrackerbyId($event)"
+        [progressTrackerItemTemplate]="customProgressItemTracker"
+        [progressTrackerTemplate]="customProgressTracker"
+        [progressTrackerHeaderTemplate]="customProgressHeaderTracker"
+      >
+      </bb-progress-tracker>
+      <ng-template
+        #customProgressTracker
+        let-hostRef
+        let-currentEvents="currentEvents"
+        let-show="show"
+        let-animate="animate"
+      >
+        <button bbButton [circle]="true" color="link" *ngIf="currentEvents.length > 0" data-role="progress-spinner">
+          <bb-icon-ui name="cached" size="lg" [animate]="animate"></bb-icon-ui>
+        </button>
+        <div class="position-absolute bb-progress-tracker" *ngIf="currentEvents.length > 0">
+          <div class="bb-progress-tracker-item-container card m-2 p-2 px-3">
+            <div class="d-flex justify-content-between border-bottom border-secondary py-2">
+              <strong class="text-sm" i18n="Progress tracker heading info@@progress-tracker-heading.info.label"
+                >Upload file log</strong
+              >
+              <div
+                class="text-muted text-sm"
+                i18n="Progress tracker total count label@@progress-tracker.total.count.label"
+              >
+                {{ currentEvents.length }} total
+              </div>
+            </div>
+
+            <div *ngFor="let event of currentEvents" class="bb-list">
+              <ng-container *ngIf="event && event.payload">
+                <div class="bb-list__item bb-list__item--no-separator">
+                  <ng-template
+                    [ngTemplateOutlet]="customProgressItemTracker"
+                    [ngTemplateOutletContext]="{ eventPayload: event.payload, cancelItem: cancelTracker }"
+                  >
+                  </ng-template>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template
+        #customProgressItemTracker
+        let-hostRef="hostRef"
+        let-cancelItem="cancelItem"
+        let-eventPayload="eventPayload"
+      >
+        <div class="bb-progress-item py-2">
+          <div class="bb-progress-tracker-header d-flex justify-content-between">
+            <div class="title">
+              <ng-template [ngTemplateOutlet]="customProgressHeaderTracker" [ngTemplateOutletContext]="hostRef">
+              </ng-template>
+            </div>
+            <div class="title-info text-muted">{{ eventPayload.progressStartTime | date: 'shortTime' }}</div>
+          </div>
+          <div class="bb-progress-tracker-body text-muted">
+            <div class="py-1">{{ eventPayload.name }}</div>
+            <div>
+              <div class="py-1">
+                <ng-container
+                  i18n="
+                    Progress tracker item estimated time left label@@progress-tracker-item.estimated.time.left.label"
+                >
+                  Estimated time left:</ng-container
+                >
+                <ng-container
+                  *ngIf="
+                    eventPayload.eta.hours > 0 || eventPayload.eta.mins > 0 || eventPayload.eta.secs > 0;
+                    else calculating
+                  "
+                >
+                  <ng-container
+                    *ngIf="eventPayload.eta.hours > 0"
+                    i18n="Progress tracker eta hours@@progress-tracker-item.estimated.time.left.hours"
+                  >
+                    {{ eventPayload.eta.hours }} {eventPayload.eta.hours, plural, =1 {hour} other {hours}}
+                  </ng-container>
+                  <ng-container
+                    *ngIf="eventPayload.eta.mins > 0"
+                    i18n="Progress tracker eta minutes@@progress-tracker-item.estimated.time.left.minutes"
+                  >
+                    {{ eventPayload.eta.mins }} {eventPayload.eta.mins, plural, =1 {minute} other {minutes}}
+                  </ng-container>
+                  <ng-container
+                    *ngIf="eventPayload.eta.hours === 0 && eventPayload.eta.mins === 0 && eventPayload.eta.secs > 0"
+                    i18n="Progress tracker eta seconds@@progress-tracker-item.estimated.time.left.seconds"
+                  >
+                    {{ eventPayload.eta.secs }} {eventPayload.eta.secs, plural, =1 {second} other {seconds}}
+                  </ng-container>
+                </ng-container>
+                <ng-template #calculating>
+                  <ng-container
+                    i18n="Progress tracker calculating eta label@@progress-tracker-item.calculating.estimated.time.left"
+                  >
+                    calculating...</ng-container
+                  >
+                </ng-template>
+              </div>
+              <div class="py-2">
+                <bb-progressbar-ui
+                  [showValue]="false"
+                  [value]="eventPayload.current"
+                  [max]="eventPayload.size"
+                  height="4px"
+                >
+                </bb-progressbar-ui>
+              </div>
+              <div class="d-flex flex-row-reverse py-2">
+                <button
+                  bbButton
+                  color="secondary"
+                  (click)="cancelItem(eventPayload)"
+                  i18n="Progress tracker item cancel button label@@progress-tracker-item.cancel.btn.label"
+                >
+                  Cancel upload
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #customProgressHeaderTracker>
+        <strong i18n="Progress tracker heading@@progress-tracker.heading">Batch file is uploading...</strong>
+      </ng-template>
+    </div>
+    <div>
+      <bb-notifications-badge
+        [allowedRoutes]="notificationsAllowedRoutes"
+        [displaySettingsButton]="displayNotificationSettingsButton"
+      ></bb-notifications-badge>
+    </div>
+    <div>
+      <bb-user-context-menu-widget
+        [appVersion]="appVersion"
+        [showSingleContext]="false"
+        [pageSize]="7"
+        [closeModalOnSelectSuccess]="false"
+        [hasCardWrap]="false"
+        (selectContextSuccess)="userContextService.reload()"
+        (logout)="userContextService.logout()"
+      ></bb-user-context-menu-widget>
+    </div>
+  </div>
+</div>

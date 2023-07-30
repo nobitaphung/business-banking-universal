@@ -1,0 +1,78 @@
+{
+  "name": "/client-api/v2/users/me/authorized-users-GET",
+  "request": {
+    "url": "/client-api/v2/users/me/authorized-users(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "id": "376069ae-f628-4569-8bb0-ec1fce83ebe9",
+          "said": "53251f6b-f081-4e22-a977-93efaa47e449",
+          "firstName": "John",
+          "lastName": "Doe",
+          "email": "john.doe@email.com",
+          "mobileNumber": "+44 012345 67890",
+          "username": "john.doe.145764",
+          "status": "AWAITING_REGISTRATION",
+          "permissions": [
+            {
+              "accountId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4691",
+              "level": "BASIC-001"
+            },
+            {
+              "accountId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4692",
+              "level": "PARTIAL-002"
+            },
+            {
+              "accountId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4600",
+              "level": "FULL-003"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

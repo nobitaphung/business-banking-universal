@@ -1,0 +1,24 @@
+{
+  "projectType": "library",
+  "root": "libs/business/feature/layout",
+  "sourceRoot": "libs/business/feature/layout/src",
+  "prefix": "bb",
+  "targets": {
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/business/feature/layout/src/test.ts",
+        "tsConfig": "libs/business/feature/layout/tsconfig.spec.json",
+        "karmaConfig": "libs/business/feature/layout/karma.conf.js",
+        "codeCoverage": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/business/feature/layout/src/**/*.ts", "libs/business/feature/layout/src/**/*.html"]
+      }
+    }
+  },
+  "tags": ["scope:business", "region:agnostic", "type:feature"]
+}

@@ -1,0 +1,346 @@
+{
+  "name": "/client-api/v2/action-recipe-specifications",
+  "request": {
+    "url": "/client-api/v2/action-recipe-specifications(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "actionRecipeSpecifications": [
+          {
+            "id": "1",
+            "name": "New Transaction",
+            "userDefinable": true,
+            "origin": "Transaction",
+            "type": "newTransaction",
+            "category": "arrangementBased",
+            "actions": [
+              {
+                "type": "notification",
+                "severityLevel": "INFO",
+                "route": {
+                  "whereTo": "transaction-view",
+                  "dataTemplate": "{\"id\": \"${transactions[0].id}\", \"arrangementId\": \"${transactions[0].arrangementId}\"}"
+                },
+                "templates": [
+                  {
+                    "locale": "en-US",
+                    "kind": "REGULAR",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  },
+                  {
+                    "locale": "en-US",
+                    "kind": "DIGEST",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  }
+                ]
+              },
+              {
+                "type": "email",
+                "templates": [
+                  {
+                    "locale": "en-US",
+                    "kind": "REGULAR",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  },
+                  {
+                    "locale": "en-US",
+                    "kind": "DIGEST",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  }
+                ]
+              },
+              {
+                "type": "sms",
+                "templates": [
+                  {
+                    "locale": "en-US",
+                    "kind": "REGULAR",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  },
+                  {
+                    "locale": "en-US",
+                    "kind": "DIGEST",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  }
+                ]
+              },
+              {
+                "type": "push",
+                "severityLevel": "INFO",
+                "route": {
+                  "whereTo": "transaction-view",
+                  "dataTemplate": "{\"id\": \"${transactions[0].id}\", \"arrangementId\": \"${transactions[0].arrangementId}\"}"
+                },
+                "templates": [
+                  {
+                    "locale": "en-US",
+                    "kind": "REGULAR",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  },
+                  {
+                    "locale": "en-US",
+                    "kind": "DIGEST",
+                    "path": "/pathto/template",
+                    "repository": "repository_id"
+                  }
+                ]
+              }
+            ],
+            "digestEnabled": true,
+            "recipeDefaults": {
+              "amount": "0",
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ]
+            }
+          },
+          {
+            "id": "4",
+            "name": "Account Low Balance",
+            "userDefinable": true,
+            "type": "accountLowBalance",
+            "category": "arrangementBased",
+            "actions": [
+              {
+                "type": "notification"
+              },
+              {
+                "type": "email"
+              },
+              {
+                "type": "sms"
+              },
+              {
+                "type": "push"
+              }
+            ],
+            "digestEnabled": false,
+            "recipeDefaults": {
+              "amount": "200",
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ],
+              "additions": {
+                "type": "Cash Withdraw"
+              }
+            }
+          },
+          {
+            "id": "5",
+            "name": "Payment Status Updated",
+            "userDefinable": true,
+            "type": "paymentStatusUpdated",
+            "category": "paymentStatusBased",
+            "actions": [
+              {
+                "type": "notification"
+              },
+              {
+                "type": "push"
+              }
+            ],
+            "digestEnabled": true,
+            "recipeDefaults": {
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ]
+            }
+          },
+          {
+            "id": "6",
+            "name": "Party Status Updated",
+            "userDefinable": true,
+            "type": "partyStatusUpdated",
+            "category": "partyStatusBased",
+            "actions": [
+              {
+                "type": "notification"
+              },
+              {
+                "type": "push"
+              }
+            ],
+            "digestEnabled": false,
+            "recipeDefaults": {
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ]
+            }
+          },
+          {
+            "id": "8",
+            "name": "Saving goal",
+            "type": "savingGoal",
+            "category": "userBased",
+            "userDefinable": true,
+            "actions": [
+              {
+                "type": "notification"
+              },
+              {
+                "type": "push"
+              }
+            ],
+            "digestEnabled": false
+          },
+          {
+            "id": "9",
+            "name": "Account statement is ready",
+            "type": "accountStatementIsReady",
+            "category": "arrangementBased",
+            "userDefinable": true,
+            "actions": [
+              {
+                "type": "email"
+              },
+              {
+                "type": "notification"
+              },
+              {
+                "type": "push"
+              }
+            ],
+            "digestEnabled": false
+          },
+          {
+            "id": "10",
+            "name": "Account Low Balance Business",
+            "type": "accountLowBalance",
+            "category": "arrangementBased",
+            "userDefinable": true,
+            "actions": [
+              {
+                "type": "notification"
+              },
+              {
+                "type": "push"
+              }
+            ],
+            "digestEnabled": false,
+            "recipeDefaults": {
+              "amount": "0",
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ]
+            }
+          },
+          {
+            "id": "13",
+            "name": "Payment to approve",
+            "type": "paymentToApprove",
+            "category": "paymentResourceBased",
+            "digestEnabled": false,
+            "recipeDefaults": {
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ],
+              "additions": {
+                "resource": "Payments"
+              }
+            }
+          },
+          {
+            "id": "14",
+            "name": "Contact to approve",
+            "type": "contactToApprove",
+            "category": "contactResourceBased",
+            "digestEnabled": false,
+            "recipeDefaults": {
+              "actions": [
+                {
+                  "type": "notification"
+                },
+                {
+                  "type": "push"
+                }
+              ],
+              "additions": {
+                "resource": "Contacts"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

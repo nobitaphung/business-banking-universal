@@ -1,0 +1,28 @@
+{
+  "development": {
+    "debugEnable": false
+  },
+  "backbase": {
+    "serverURL": "https://app.example.com",
+    "experience": "",
+    "localModelPath": "$(contextRoot)/conf/localModel.json",
+    "version": "6.2.3.1",
+    "identity": {
+      "baseURL": "https://identity.example.com",
+      "realm": "example-realm",
+      "clientId": "example-client-id",
+      "applicationKey": "example-application-key"
+    }
+  },
+  "security": {
+    "allowedDomains": [
+      "*"
+    ],
+    "sslPinning": {
+      "certificates": [
+        "$(contextRoot)/conf/example.der"
+      ],
+      "checkChain": true
+    }
+  }
+}

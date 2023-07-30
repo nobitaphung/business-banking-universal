@@ -1,0 +1,77 @@
+@import '~@backbase/backbase-theme-business-preset/scss/main';
+
+.app-loading {
+  width: 100px;
+  height: 100px;
+  position: static;
+  top: 50%;
+  left: 50%;
+}
+
+.app-loading {
+  .logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 94px;
+    height: 100px;
+
+    background: url('/assets/logo-emblem.svg') center center no-repeat;
+  }
+}
+
+.app-loading .spinner {
+  height: 200px;
+  width: 200px;
+  animation: rotate 2s linear infinite;
+  transform-origin: center center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.app-loading .spinner .path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+  stroke: #ddd;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+.self-service-journey [data-role='user-localization-communications-header'] h1,
+.self-service-journey [data-role='user-localization-change-language-header'] h1,
+.self-service-journey [data-role='user-manage-profile-user-name'] h1,
+.self-service-journey [data-role='device-information-view-header'] h1,
+.self-service-journey [data-role='login-security-view-header'] h1 {
+  color: $color-neutral-white;
+}
+
+.bb-layout__topbar-content-area {
+  .bb-progress-tracker {
+    left: 62%;
+  }
+}

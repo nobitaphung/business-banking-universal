@@ -1,0 +1,68 @@
+{
+  "name": "/access-control/client-api/v2/accessgroups/service-agreements/{id}/users/{userId}/permissions",
+  "request": {
+    "url": "/access-control/client-api/v2/accessgroups/service-agreements/[^/]+/users/[^/]+/permissions(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "items": [
+          {
+            "functionGroupId": "98f8531d-9bf4-4f3f-a49b-7cf331d6eead",
+            "dataGroupIds": [
+              {
+                "id": "138a7683-e9da-4ffa-a257-b78626790cd7"
+              }
+            ]
+          },
+          {
+            "functionGroupId": "00779897-253c-4bbb-b0c7-3c47fd0b0b08",
+            "dataGroupIds": []
+          }
+        ]
+      }
+    }
+  }
+}

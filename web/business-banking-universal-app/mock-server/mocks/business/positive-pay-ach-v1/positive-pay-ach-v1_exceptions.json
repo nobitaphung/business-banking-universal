@@ -1,0 +1,125 @@
+{
+  "name": "/client-api/v1/exceptions",
+  "request": {
+    "url": "/client-api/v1/exceptions(\\?.*)?$",
+    "method": "POST"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "exceptions": [
+          {
+            "id": "df6bf97c-19cc-4056-9524-42cef5ce71b8",
+            "arrangementId": "1cdb2224-8926-4b4d-a99f-1c9dfbbb4692",
+            "paymentType": "ACH Debit",
+            "originatorId": "5123456789",
+            "originatorName": "First Originator",
+            "standardEntryClass": "CIE",
+            "amount": {
+              "amount": "100.00",
+              "currencyCode": "USD"
+            },
+            "requestDate": "2020-12-31T06:30:00.000-05:00",
+            "errors": ["Invalid Standard Entry Class", "Originator is blocked"]
+          },
+          {
+            "id": "8632554d-1d19-4876-b35a-4cef21934bc6",
+            "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4600",
+            "paymentType": "ACH Credit",
+            "originatorId": "4123456789",
+            "originatorName": "Second Originator",
+            "standardEntryClass": "CCD",
+            "amount": {
+              "amount": "999.99",
+              "currencyCode": "USD"
+            },
+            "requestDate": "2020-12-31T05:30:00.000-05:00",
+            "errors": ["Invalid Standard Entry Class", "Originator is blocked"]
+          },
+          {
+            "id": "6c5bd090-4430-4c8a-ae3f-d50399b95bd8",
+            "arrangementId": "4cdb2224-8926-4b4d-a99f-1c9dfbbb4697",
+            "paymentType": "ACH Debit",
+            "originatorId": "5120056789",
+            "standardEntryClass": "CCD",
+            "amount": {
+              "amount": "2657.53",
+              "currencyCode": "USD"
+            },
+            "requestDate": "2020-12-31T04:30:00.000-05:00",
+            "errors": ["Invalid payment type"]
+          },
+          {
+            "id": "1453f0e5-cb1c-4706-b774-620ad7695163",
+            "arrangementId": "5cdb2224-8926-4b4d-a99f-1c9dfbbb4696",
+            "paymentType": "ACH Debit",
+            "originatorId": "2123456789",
+            "originatorName": "Originator First",
+            "standardEntryClass": "CIE",
+            "amount": {
+              "amount": "10000.00",
+              "currencyCode": "USD"
+            },
+            "requestDate": "2020-12-31T03:30:00.000-05:00",
+            "errors": ["Maximum amount exceeded"]
+          },
+          {
+            "id": "20d499a0-e60e-47ce-bbb4-cae2abce4dea",
+            "arrangementId": "2d94d333-471d-4cd7-84d2-24e822d5ca68",
+            "paymentType": "ACH Debit",
+            "originatorId": "1123456789",
+            "originatorName": "Originator First",
+            "standardEntryClass": "CCD",
+            "amount": {
+              "amount": "899.00",
+              "currencyCode": "USD"
+            },
+            "requestDate": "2020-12-31T02:30:00.000-05:00",
+            "errors": ["Maximum amount exceeded"]
+          }
+        ]
+      }
+    }
+  }
+}

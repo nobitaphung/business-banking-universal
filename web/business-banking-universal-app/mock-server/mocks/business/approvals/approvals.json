@@ -1,0 +1,92 @@
+{
+  "name": "/client-api/v2/approvals",
+  "request": {
+    "url": "/client-api/v2/approvals(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "approvals": [
+          {
+            "id": "b3e4692d-6772-4fb2-9446-b8f4607f49b1",
+            "userId": "606d4532-f8d9-4a5f-840a-887baf88fa24",
+            "serviceAgreementId": "c3f62ff9-2894-47d9-a34a-2c8b54e6e9be",
+            "itemId": "4cf9a1da-2f48-4f9b-8a97-204c8cd43aa0",
+            "dataAccessItemId": "975809ca-008c-4732-9ae0-a2531d4800bc",
+            "resource": "Payments",
+            "function": "SEPA_CT",
+            "status": "PENDING",
+            "records": [
+              {
+                "id": "59f23015-9007-4391-a604-1d17e85ab3c0",
+                "userId": "fc546710-cb4d-40a2-9a5c-52f6772a907b",
+                "serviceAgreementId": "c3f62ff9-2894-47d9-a34a-2c8b54e6e9be",
+                "approvalTypeId": "8b4cf4ba-1b6d-43fe-bb44-3c762e0ba5c1",
+                "status": "APPROVED",
+                "createdAt": "2018-01-22T13:44:02Z"
+              }
+            ],
+            "finalApprover": true,
+            "createdAt": "2018-01-22T13:44:02Z"
+          },
+          {
+            "id": "21339aac-9e00-4dd5-9dd9-c9b1727471cf",
+            "userId": "606d4532-f8d9-4a5f-840a-887baf88fa24",
+            "serviceAgreementId": "c3f62ff9-2894-47d9-a34a-2c8b54e6e9be",
+            "itemId": "4af6d50e-cde5-401d-95c9-2a78f51672c9",
+            "dataAccessItemId": "4f727cdf-426f-42aa-bbf1-6a4548d1d4a9",
+            "resource": "Payments",
+            "function": "US_DOMESTIC",
+            "status": "PENDING",
+            "records": [],
+            "finalApprover": false,
+            "createdAt": "2018-01-22T13:44:02Z"
+          }
+        ],
+        "cursor": "3aa95dcf-fba8-41b8-a97b-bfae602e1a7d"
+      }
+    }
+  }
+}

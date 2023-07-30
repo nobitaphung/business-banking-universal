@@ -1,0 +1,13 @@
+
+#
+# Template for new configuration profiles
+# 
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - path1
+            - path2

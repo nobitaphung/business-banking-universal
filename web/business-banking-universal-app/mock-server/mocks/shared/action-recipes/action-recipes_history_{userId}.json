@@ -1,0 +1,84 @@
+{
+  "name": "/client-api/v2/action-recipes/history/{userId}",
+  "request": {
+    "url": "/client-api/v2/action-recipes/history/[^/]+(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "actionEventsHistory": [
+          {
+            "alertName": "Low balance alert",
+            "deliveryMethod": "sms",
+            "alertDate": "2019-12-16T19:35:05.000+0000",
+            "alertText": "Warning! Your account balance is below 20 EUR.",
+            "destinations": ["+380987654321", "+380123456789"]
+          },
+          {
+            "alertName": "Low balance alert",
+            "deliveryMethod": "email",
+            "alertDate": "2019-12-16T19:25:05.000+0000",
+            "alertText": "Warning! Your account balance is below 20 EUR.",
+            "destinations": ["user@domain.com", "resu@domain.com"]
+          },
+          {
+            "alertName": "Low balance alert",
+            "deliveryMethod": "notification",
+            "alertDate": "2019-12-16T19:15:05.000+0000",
+            "alertText": "Warning! Your account balance is below 20 EUR.",
+            "destinations": ["User id - 'userId'"]
+          },
+          {
+            "alertName": "Party status updated alert",
+            "deliveryMethod": "notification",
+            "alertDate": "2019-12-16T19:10:05.000+0000",
+            "alertText": "Your contact 'Sarah' is active. You can find this in 'My Requests'",
+            "destinations": ["User id - 'Sarah', Service agreement id - '2b5b4bff-4135-4d18-b3fc-eb86d647dccd'"]
+          }
+        ]
+      }
+    }
+  }
+}

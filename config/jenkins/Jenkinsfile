@@ -1,0 +1,161 @@
+@Library([
+    'jenkins-shared-library@latest',
+    'f5-shared-jenkins-library@latest',
+]) _
+
+pom = [:]
+branchInfo = [:]
+dockerTags = [] as Set
+
+pipeline {
+    agent {
+        label "jenkins-maven-agent-jdk11"
+    }
+    // Disable concurrent build so we don't push the image twice.
+    options {
+        disableConcurrentBuilds abortPrevious: true
+    }
+    tools {
+        jdk 'jdk-17'
+    }
+
+    environment {
+        // -> Environment variable values must either be single quoted, double quoted, or function calls.
+        PROJECT_KEY = "PA"
+
+        HOME = "$HOME/$EXECUTOR_NUMBER"
+        PATH = "$WORKSPACE:$HOME/bin:$PATH"
+
+        HARBOR_CREDS = credentials('harbor-credentials')
+        GITHUB_CREDS = credentials('gh_rndbot_user')
+        MAVEN_CREDS = credentials('artifactory_auto-release')
+
+        MAVEN_OPTS  = "-Duser.home=$HOME/$EXECUTOR_NUMBER"
+        MAVEN_CONFIG = "-B"
+    }
+
+    stages {
+        stage 'Checkout',  {
+            steps {
+                cleanWs()
+                ciSCMCheckout()
+            }
+        }
+        stage 'Initialize', {
+            steps {
+                script {
+                    pom = readMavenPom()
+                    branchInfo = getBranchInfo()
+                }
+            }
+        }
+        stage 'Snapshot', {
+            when {
+                not { branch 'main' }
+            }
+            stages {
+                stage 'Compile & Verify', {
+                    steps {
+                        withCredentials([
+                            usernamePassword(
+                                credentialsId: 'gh_rndbot_user',
+                                usernameVariable: 'CONFIG_CREDENTIALS_USERNAME',
+                                passwordVariable: 'CONFIG_CREDENTIALS_PASSWORD',
+                            )]) {
+                            sh "mvnw install -Dmaven.test.failure.ignore"
+                            junit testResults: '**/TEST-*.xml', allowEmptyResults: false, keepLongStdio: true
+                        }
+                    }
+                }
+                stage 'Docker - Development', {
+                    when {
+                        not { branch 'main' }
+                    }
+                    steps {
+                        script {
+                            // The additional docker tags are used to link logicaly a
+                            // development version of the config server to other things
+                            // like a feature branch of a capability or a testing branch
+                            // of a Beck environment.
+                            // 
+                            // I added here all the variants I'm aware of (BB-BOM, Products, Payments).
+                            dockerTags << branchInfo.id
+                            dockerTags << sanitiseName(env.BRANCH_NAME)
+                            dockerTags << env.BRANCH_NAME.replaceAll("[^a-zA-Z0-9]+","")
+                        }
+                        withCredentials([string(credentialsId: 'gh_rndbot_token', variable: 'CONFIG_CREDENTIALS_PASSWORD')]) {
+                            sh """
+                            export CONFIG_CREDENTIALS_USERNAME=gh_rndbot_user
+                            mvnw package -Pdocker-image \
+                                -Ddocker.repo.project=development \
+                                -Ddocker.default.tag=${pom.version.minus('SNAPSHOT').plus(branchInfo.id).plus('-SNAPSHOT')} \
+                                -Ddocker.jib.goal=build \
+                                -Djib.to.tags=${dockerTags.join(',')} \
+                                -Djib.to.auth.username=\$HARBOR_CREDS_USR -Djib.to.auth.password=\$HARBOR_CREDS_PSW \
+                                -Djib.from.auth.username=\$HARBOR_CREDS_USR -Djib.from.auth.password=\$HARBOR_CREDS_PSW \
+                                -Djib.httpTimeout=600000
+                            """
+                        }
+                    }
+                }
+            }
+        }
+        stage 'Release', {
+            when {
+                branch 'main'
+            }
+            stages {
+                stage 'Build Release', {
+                    steps {
+                        // We don't publish Config Server as a Maven arterfact
+                        // that's why the release goal is just "install",
+                        // which includes compile and verify
+                        withCredentials([
+                            usernamePassword(
+                                credentialsId: 'gh_rndbot_user',
+                                usernameVariable: 'CONFIG_CREDENTIALS_USERNAME',
+                                passwordVariable: 'CONFIG_CREDENTIALS_PASSWORD',
+                            )]) {
+                            sh """
+                            mvnw release:prepare release:perform \
+                                -DpushChanges=false \
+                                -DlocalCheckout \
+                                -Dgoals=install
+                            """
+                        }
+
+                        script {
+                            pom = readMavenPom(file: 'target/checkout/pom.xml')
+                        }
+                    }
+                }
+                stage 'Docker - Release', {
+                    steps {
+                        dir 'target/checkout', {
+                            withCredentials([string(credentialsId: 'gh_rndbot_token', variable: 'CONFIG_CREDENTIALS_PASSWORD')]) {
+                                sh """
+                                export CONFIG_CREDENTIALS_USERNAME=gh_rndbot_user
+                                mvnw package -Pdocker-image \
+                                    -Ddocker.repo.project=internal \
+                                    -Ddocker.default.tag=${pom.version} \
+                                    -Ddocker.jib.goal=build \
+                                    -Djib.to.auth.username=\$HARBOR_CREDS_USR -Djib.to.auth.password=\$HARBOR_CREDS_PSW \
+                                    -Djib.from.auth.username=\$HARBOR_CREDS_USR -Djib.from.auth.password=\$HARBOR_CREDS_PSW \
+                                    -Djib.httpTimeout=600000
+                                """
+                            }
+                        }
+                    }
+                }
+                stage 'Push Changes', {
+                    steps {
+                          sshagent(['jenkins_rndbot_ssh_key']) {
+                            sh "git push origin HEAD:main"
+                            sh "git push origin --tags"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

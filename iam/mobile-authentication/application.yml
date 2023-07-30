@@ -1,0 +1,10 @@
+---
+### Live profile
+sso:
+  jwt:
+    internal:
+      type: signed
+      signature:
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY

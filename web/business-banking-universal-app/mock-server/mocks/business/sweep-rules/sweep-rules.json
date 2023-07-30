@@ -1,0 +1,207 @@
+{
+  "name": "/client-api/v2/sweep-rules",
+  "request": {
+    "url": "/client-api/v2/sweep-rules(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "items": [
+          {
+            "id": 135864,
+            "name": "Investment IS 605",
+            "description": "Two-way daily investment sweep that never expires.",
+            "sweptAccountBban": "6129172765GE6UQ2U8TYD56",
+            "targetAccountBban": "680BCNMXVMFAY60",
+            "lowerBoundAmount": 10000,
+            "upperBoundAmount": 12500,
+            "status": "entered",
+            "ruleType": "two-way",
+            "schedule": {
+              "frequency": "EvryDay(1)",
+              "dayOptions": {
+                "startingAtTime": 540,
+                "intradayRepeat": {
+                  "everyMinutes": 60,
+                  "endingAtTime": 1260
+                }
+              }
+            },
+            "startDate": "2019-04-10T15:52:27.218Z",
+            "createdAt": "2019-04-09T15:52:27.218Z",
+            "createdBy": "Anna Hrechana"
+          },
+          {
+            "id": 246975,
+            "name": "Current CS 16",
+            "description": "Two-way monthly sweep between current accounts that expires today.",
+            "sweptAccountBban": "TRIO0212471066",
+            "targetAccountBban": "FR596129172765GE6UQ2U8TYD56",
+            "lowerBoundAmount": 500,
+            "upperBoundAmount": 1750,
+            "status": "active",
+            "ruleType": "two-way",
+            "schedule": {
+              "frequency": "EvryMonth(1)",
+              "monthOptions": {
+                "startingAtTime": 720,
+                "monthRepeat": "week-day-of-the-month"
+              }
+            },
+            "startDate": "2019-04-10T16:24:37.463Z",
+            "createdAt": "2019-04-09T16:24:37.463Z",
+            "createdBy": "Serhii Koshman"
+          },
+          {
+            "id": 137731,
+            "name": "Loan LS 31",
+            "description": "Loan sweep that takes place each 4 weeks on Sundays until manually stopped.",
+            "sweptAccountBban": "FR596129172765GE6UQ2U8TYD56",
+            "targetAccountBban": "6129172765GE6UQ2U8TYD84",
+            "upperBoundAmount": 5000,
+            "status": "paused",
+            "ruleType": "one-way",
+            "schedule": {
+              "frequency": "EvryWeek(4)",
+              "weekOptions": {
+                "startingAtTime": 0,
+                "weekRepeatDay": 0
+              }
+            },
+            "startDate": "2019-01-01T16:24:37.463Z",
+            "createdAt": "2019-01-01T16:23:37.463Z",
+            "createdBy": "Marian Kitsenko"
+          },
+          {
+            "id": 225547,
+            "name": "Savings SS 24",
+            "description": "One-time one-way sweep to accumulate savings performed on a daily basis.",
+            "sweptAccountBban": "FR596129172765GE6UQ2U8TYD56",
+            "targetAccountBban": "TRIO0212471066",
+            "upperBoundAmount": 1100,
+            "status": "rejected",
+            "ruleType": "one-way",
+            "schedule": {
+              "frequency": "EvryDay(1)",
+              "dayOptions": {
+                "startingAtTime": 30,
+                "intradayRepeat": {
+                  "everyMinutes": 60,
+                  "endingAtTime": 30
+                }
+              }
+            },
+            "startDate": "2019-04-11T08:10:18.591Z",
+            "expiryDate": "2019-04-11T20:59:59.999Z",
+            "createdAt": "2019-04-10T08:10:18.591Z",
+            "createdBy": "Dmytro Topchii"
+          },
+          {
+            "id": 110580,
+            "name": "Debit SD 350",
+            "description": "Maintenance sweep to handle debit card account set to repeat once a week starting from next month.",
+            "sweptAccountBban": "FR596129172765GE6UQ2U8TYD56",
+            "targetAccountBban": "6129172765GE6UQ2U8TYD84",
+            "lowerBoundAmount": 1000,
+            "status": "cancelled",
+            "ruleType": "one-way",
+            "schedule": {
+              "frequency": "EvryDay(7)",
+              "dayOptions": {
+                "startingAtTime": 540
+              }
+            },
+            "startDate": "2019-05-10T21:00:00.000Z",
+            "expiryDate": "2019-05-11T20:59:59.999Z",
+            "createdAt": "2019-05-09T21:00:00.000Z",
+            "createdBy": "Serhii Sobur"
+          },
+          {
+            "id": 190783,
+            "name": "Debit 500",
+            "description": "Maintenance sweep to handle debit card account set to repeat every 5 days starting from next month.",
+            "sweptAccountBban": "FR596129172765GE6UQ2U8TYD56",
+            "targetAccountBban": "6129172765GE6UQ2U8TYD84",
+            "lowerBoundAmount": 500,
+            "status": "processing",
+            "ruleType": "one-way",
+            "schedule": {
+              "frequency": "EvryDay(5)",
+              "dayOptions": {
+                "startingAtTime": 540
+              }
+            },
+            "startDate": "2019-05-10T21:00:00.000Z",
+            "expiryDate": "2019-05-11T20:59:59.999Z",
+            "createdAt": "2019-05-09T21:00:00.000Z",
+            "createdBy": "Yevhen Lubianov"
+          },
+          {
+            "id": 256076,
+            "name": "Outdated CS 3",
+            "description": "Two-way monthly sweep between current accounts that have been expired.",
+            "sweptAccountBban": "TRIO0212471066",
+            "targetAccountBban": "FR596129172765GE6UQ2U8TYD56",
+            "lowerBoundAmount": 500,
+            "upperBoundAmount": 1750,
+            "status": "expired",
+            "ruleType": "two-way",
+            "schedule": {
+              "frequency": "EvryMonth(1)",
+              "monthOptions": {
+                "startingAtTime": 720,
+                "monthRepeat": "week-day-of-the-month"
+              }
+            },
+            "startDate": "2019-03-10T16:24:37.463Z",
+            "expiryDate": "2019-04-10T16:24:37.463Z",
+            "createdAt": "2019-03-09T16:24:37.463Z",
+            "createdBy": "Yevhenii Holub"
+          }
+        ]
+      }
+    }
+  }
+}

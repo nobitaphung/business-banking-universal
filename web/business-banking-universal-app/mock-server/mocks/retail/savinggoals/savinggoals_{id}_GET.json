@@ -1,0 +1,124 @@
+{
+  "name": "/client-api/v2/savinggoals/{id}-GET",
+  "request": {
+    "url": "/client-api/v2/savinggoals/[^/]+(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "id": "1955e686-d31e-4216-b3dd-5d66161d536b",
+        "goalName": "Holiday to Hawaii",
+        "goalAmount": {
+          "amount": "2000.00",
+          "currencyCode": "EUR"
+        },
+        "arrangementId": "3cdb2224-8926-4b4d-a99f-1c9dfbbb4699",
+        "amountProgress": {
+          "amount": "550.00",
+          "currencyCode": "EUR"
+        },
+        "progressPercentage": 27.5,
+        "performancePercentage": 27.5,
+        "timePercentage": 50.5,
+        "amountRemaining": {
+          "amount": "1450.00",
+          "currencyCode": "EUR"
+        },
+        "startDate": "2017-02-28",
+        "endDate": "2019-02-28",
+        "initialAmount": {
+          "amount": "10.00",
+          "currencyCode": "EUR"
+        },
+        "recipeId": "65b5c1b7-17e0-435f-a828-e2f6afec26a9"
+      }
+    },
+    "success_1": {
+      "status": 200,
+      "data": {
+        "arrangementId": "arrangementId",
+        "goalAmount": {
+          "amount": "amount",
+          "additions": {
+            "key": "additions"
+          },
+          "currencyCode": "currencyCode"
+        },
+        "additions": {
+          "key": "additions"
+        },
+        "endDate": "2000-01-23",
+        "recipeId": "recipeId",
+        "goalName": "goalName",
+        "amountRemaining": {
+          "amount": "amount",
+          "additions": {
+            "key": "additions"
+          },
+          "currencyCode": "currencyCode"
+        },
+        "initialAmount": {
+          "amount": "amount",
+          "additions": {
+            "key": "additions"
+          },
+          "currencyCode": "currencyCode"
+        },
+        "progressPercentage": 0.8008281904610115,
+        "performancePercentage": 6.027456183070403,
+        "amountProgress": {
+          "amount": "amount",
+          "additions": {
+            "key": "additions"
+          },
+          "currencyCode": "currencyCode"
+        },
+        "id": "id",
+        "timePercentage": 1.4658129805029452,
+        "startDate": "2000-01-23"
+      }
+    }
+  }
+}

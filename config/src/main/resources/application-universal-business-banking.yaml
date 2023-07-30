@@ -1,0 +1,9 @@
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          search-paths:
+            - configs/universal/dbs/business-banking
+            - configs/universal/iam/business-banking

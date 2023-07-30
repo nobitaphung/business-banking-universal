@@ -1,0 +1,18 @@
+<div class="d-block">
+  <div class="bb-login__background-container--fill bb-login__background-select-context"></div>
+  <div class="fixed-top position-absolute">
+    <div class="card card-lg bb-login__select-context">
+      <bb-select-context-widget
+        data-role="user-context-selector"
+        class="card-body"
+        [pageSize]="7"
+        [includeCurrentContext]="false"
+        [showSearchAfter]="5"
+        [showBackButton]="true"
+        [hasCardWrap]="false"
+        (back)="userContextService.logout()"
+        (selectContextSuccess)="userContextService.openLandingPage()"
+      ></bb-select-context-widget>
+    </div>
+  </div>
+</div>

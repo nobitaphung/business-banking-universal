@@ -1,0 +1,245 @@
+logging:
+  level:
+    root: INFO
+    '[org.springframework.cloud.config]': INFO
+    '[org.springframework.boot.context]': INFO
+    '[org.zalando.logbook]': INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logbook:
+  minimum-status: 200
+  filter:
+    enabled: true
+  format:
+    style: http
+
+spring:
+  main:
+    banner-mode: "off"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: combined-business-banking
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: payment-order-options
+      source-count: 1
+      expected-values:
+        backbase:
+          payments:
+            international-payment-order-country-settings:
+              countries:
+                NL:
+                  is-default-country: true
+                  sanctioned-currencies:
+                    default: EUR
+                    popular: EUR, GBP, HKD
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: universal-business-banking
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: transaction-manager
+      source-count: 1
+      expected-values:
+        backbase:
+          transaction:
+            export:
+              csv:
+                dateFormat: "dd-MM-yyyy"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: universal-plus
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: transaction-manager
+      source-count: 1
+      expected-values:
+        backbase:
+          transaction:
+            export:
+              csv:
+                dateFormat: "MM-dd-yyyy"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: universal-retail
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: payment-order-service
+      source-count: 2
+      expected-values:
+        backbase:
+          payments:
+            types:
+              POCKET_TRANSFER:
+                business-function: A2A Transfer
+                enrichment:
+                  enrichers:
+                    - counterparty-parent
+    case1:
+      application: transaction-manager
+      source-count: 1
+      unexpected-keys:
+        backbase:
+          transaction:
+            export:
+              csv:
+                dateFormat: "MM-dd-yyyy"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: universal-retail-pockets-one-to-one
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: payment-order-service
+      source-count: 2
+      expected-values:
+        backbase:
+          payments:
+            types:
+              POCKET_TRANSFER:
+                business-function: A2A Transfer
+      unexpected-keys:
+        backbase:
+          payments:
+            types:
+              POCKET_TRANSFER:
+                enrichment:
+                  enrichers:
+                    - counterparty-parent
+    case1:
+      application: transaction-manager
+      source-count: 1
+      unexpected-keys:
+        backbase:
+          transaction:
+            export:
+              csv:
+                dateFormat: "MM-dd-yyyy"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: usa-business-banking
+
+dynamic-tests:
+  expectations:
+    case0:
+        application: arrangement-manager
+        source-count: 1
+        expected-values:
+          backbase:
+            arrangement:
+              alias:
+                journey: ACCOUNT_ALIAS
+              masking:
+                use-mask-indicator: false
+    case1:
+      application: limit
+      source-count: 1
+      expected-values:
+        backbase:
+          limits:
+            defaults:
+              firstDayOfWeek: Sunday
+            xccy:
+              enabled: true
+              strategy: ask-always
+    case2:
+      application: transaction-manager
+      source-count: 1
+      expected-values:
+        backbase:
+          transaction:
+            export:
+              csv:
+                dateFormat: "MM-dd-yyyy"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: usa-retail
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: arrangement-manager
+      source-count: 0
+    case1:
+      application: limit
+      source-count: 1
+      expected-values:
+        backbase:
+          limits:
+            defaults:
+              firstDayOfWeek: SUNDAY
+      unexpected-keys:
+        backbase:
+          limits:
+            xccy:
+              enabled: true
+              strategy: ask-always
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: usa-retail-pockets-one-to-one
+
+dynamic-tests:
+  expectations:
+    case0:
+      application: arrangement-manager
+      source-count: 0
+    case1:
+      application: limit
+      source-count: 1
+      expected-values:
+        backbase:
+          limits:
+            defaults:
+              firstDayOfWeek: SUNDAY
+      unexpected-keys:
+        backbase:
+          limits:
+            xccy:
+              enabled: true
+              strategy: ask-always

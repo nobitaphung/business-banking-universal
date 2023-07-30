@@ -1,0 +1,27 @@
+{
+  "name": "postEnrollments",
+  "request": {
+    "url": "/api/enrollment-manager/client-api/v1/enrollments",
+    "method": "POST"
+  },
+  "responses": {
+    "notFound": {
+      "status": 404
+    },
+    "created": {
+      "default": true,
+      "status": 201,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "data": {
+        "challengeType": "INSTRUCTIONS",
+        "challenge": "2740f44c-c4ab-42a4-bbf1-1ad46b53b743",
+        "enrollmentId": "eb101331-f6cd-4d44-81c8-7b325619a362"
+      }
+    },
+    "terminalError": {
+      "status": 500
+    }
+  }
+}

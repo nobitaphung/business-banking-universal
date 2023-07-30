@@ -1,0 +1,98 @@
+{
+  "name": "/client-api/v2/payment-orders/{paymentOrderId}/approvals",
+  "request": {
+    "url": "/client-api/v2/payment-orders/[^/]+/approvals(\\?.*)?$",
+    "method": "PUT"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 202,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ENTERED"
+      }
+    },
+    "success_1": {
+      "status": 202,
+      "data": {
+        "id": "af2599ef-759a-4b78-8e67-4949055a532b",
+        "status": "ENTERED",
+        "approvalStatus": "APPROVED"
+      }
+    },
+    "success_2": {
+      "status": 202,
+      "data": {
+        "approvalStatus": "approvalStatus",
+        "reasonText": "reasonText",
+        "nextExecutionDate": "2000-01-23",
+        "errorDescription": "errorDescription",
+        "additions": {
+          "key": "additions"
+        },
+        "exportAllowed": true,
+        "bankStatus": "bankStatus",
+        "paymentSetupId": "paymentSetupId",
+        "transferFee": {
+          "amount": "amount",
+          "additions": {
+            "key": "additions"
+          },
+          "currencyCode": "currencyCode"
+        },
+        "exchangeRateInformation": {
+          "rateType": "ACTUAL",
+          "contractIdentification": "contractIdentification",
+          "additions": {
+            "key": "additions"
+          },
+          "rate": "rate",
+          "currencyCode": "currencyCode"
+        },
+        "id": "id",
+        "reasonCode": "reasonCode",
+        "paymentSubmissionId": "paymentSubmissionId"
+      }
+    }
+  }
+}

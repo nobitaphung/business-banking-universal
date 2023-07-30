@@ -1,0 +1,85 @@
+{
+  "name": "/access-control/client-api/v2/accessgroups/users/data-item-permissions",
+  "request": {
+    "url": "/access-control/client-api/v2/accessgroups/users/data-item-permissions(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        {
+          "dataItem": {
+            "id": "9fa0961eb3d04dd3a5e48748d27e7275",
+            "dataType": "ARRANGEMENTS"
+          },
+          "permissions": [
+            {
+              "resource": "Payments",
+              "businessFunction": "SEPA CT",
+              "privileges": ["view"]
+            },
+            {
+              "resource": "Payments",
+              "businessFunction": "Domestic Payments",
+              "privileges": ["view", "create"]
+            }
+          ]
+        },
+        {
+          "dataItem": {
+            "id": "9fa0961eb3d046d3a5e48748d27e7275",
+            "dataType": "ARRANGEMENTS"
+          },
+          "permissions": [
+            {
+              "resource": "Payments",
+              "businessFunction": "Domestic Payments",
+              "privileges": ["approve"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

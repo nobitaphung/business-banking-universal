@@ -1,0 +1,35 @@
+def configurationPath = "src/main/assets/backbase/conf"
+def configFileName = "config.json"
+def bbMobilePath = "/usr/local/bin/bb-mobile"
+
+tasks.register("encryptConfigurationFile") {
+    doLast {
+        try {
+            println("Creating configuration backup")
+            copy {
+                from configurationPath + "/" + configFileName
+                into "."
+                rename(configFileName, configFileName + "_backup")
+            }
+
+            exec {
+                commandLine bbMobilePath, "encrypt", "android", configurationPath + "/" + configFileName, "-d", "../"
+            }
+            println("Configuration file encrypted")
+        } catch (Exception e) {
+            e.printStackTrace()
+        }
+    }
+}
+
+tasks.register("restoreConfigurationFile") {
+    doLast {
+        println("Restoring configuration to plain text")
+        copy {
+            from configFileName + "_backup"
+            into configurationPath
+            rename(configFileName + "_backup", configFileName)
+        }
+        delete(configFileName + "_backup")
+    }
+}

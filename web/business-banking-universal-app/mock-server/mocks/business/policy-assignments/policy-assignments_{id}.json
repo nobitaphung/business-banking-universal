@@ -1,0 +1,137 @@
+{
+  "name": "/client-api/v2/policy-assignments/{id}",
+  "request": {
+    "url": "/client-api/v2/policy-assignments/(?!(approvable-business-functions))[^/]+(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "serviceAgreementId": "92058e99-88f7-45d9-bb99-s4s4s4s4s4s4",
+        "serviceAgreementName": "Service agreement name",
+        "serviceAgreementDescription": "Service agreement description",
+        "function": "Sepa CT",
+        "resource": "Payments",
+        "status": "ACTIVE",
+        "assignedPolicies": [
+          {
+            "id": "03de4365-43c1-4e1d-aa6f-dc687dcdffec",
+            "policyId": "38e4c392-de63-4b1a-b15b-9ea6b56b9e1b",
+            "name": "Simple policy",
+            "description": "A simple policy that requires one approval of type A",
+            "upperBound": {
+              "amount": "100.00",
+              "currencyCode": "EUR"
+            }
+          },
+          {
+            "id": "6546c424-d3b1-4848-bbda-31cd44ab6916",
+            "policyId": "75419243-3d83-40ce-98b2-d2313bf3cf13",
+            "name": "Default policy",
+            "description": "A default policy that requires two approvals of different types: A + B",
+            "upperBound": {
+              "amount": "200.00",
+              "currencyCode": "EUR"
+            }
+          }
+        ],
+        "dataGroupSpecificPolicies": [
+          {
+            "dataGroups": [
+              {
+                "id": "8a49404e7750618601775066a0130006",
+                "name": "Salary Accounts",
+                "deleted": false
+              },
+              {
+                "id": "8a49404e7750618601775066a0130006",
+                "name": "Tax Accounts",
+                "deleted": false
+              }
+            ],
+            "assignedPolicies": [
+              {
+                "id": "03de4365-43c1-4e1d-aa6f-dc687dcdffec",
+                "policyId": "38e4c392-de63-4b1a-b15b-9ea6b56b9e1b",
+                "name": "Simple policy",
+                "description": "A simple policy that requires one approval of type A",
+                "upperBound": {
+                  "amount": "100.00",
+                  "currencyCode": "EUR"
+                }
+              },
+              {
+                "id": "6546c424-d3b1-4848-bbda-31cd44ab6916",
+                "policyId": "75419243-3d83-40ce-98b2-d2313bf3cf13",
+                "name": "Default policy",
+                "description": "A default policy that requires two approvals of different types: A + B",
+                "upperBound": {
+                  "amount": "200.00",
+                  "currencyCode": "EUR"
+                }
+              }
+            ]
+          },
+          {
+            "dataGroups": [
+              {
+                "id": "8a49404e7750618601775066a0130034",
+                "name": "Marketing US",
+                "deleted": false
+              }
+            ],
+            "assignedPolicies": [
+              {
+                "id": "03de4365-43c1-4e1d-aa6f-dc687dcdffec",
+                "policyId": "38e4c392-de63-4b1a-b15b-9ea6b56b9e1b",
+                "name": "Simple policy",
+                "description": "A simple policy that requires one approval of type A"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

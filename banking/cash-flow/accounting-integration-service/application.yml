@@ -1,0 +1,19 @@
+---
+### Live profile
+spring:
+  profiles: live
+  application:
+    name: accounting-integration-service
+  liquibase:
+    enabled: false
+  datasource:
+    driver-class-name: ${spring.datasource.driver-class-name}
+    username: ${spring.datasource.username.accounting-integration-service}
+    password: ${spring.datasource.password.accounting-integration-service}
+    url: ${spring.datasource.url.accounting-integration-service}
+codat:
+  api-key:
+  host: https://api-uat.codat.io
+  timeoutInMillis: 30000
+integration:
+  quickbooks-logo-url: https://quickbooks.intuit.com/content/dam/intuit/quickbooks/common/qb_thumb.png

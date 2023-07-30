@@ -1,0 +1,8 @@
+{
+  "root": "libs/business/assets",
+  "sourceRoot": "libs/business/assets/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {},
+  "tags": ["type:assets", "scope:business", "region:agnostic"]
+}

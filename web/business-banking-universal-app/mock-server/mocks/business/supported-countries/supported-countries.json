@@ -1,0 +1,90 @@
+{
+  "name": "/client-api/v2/supported-countries",
+  "request": {
+    "url": "/client-api/v2/supported-countries(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": [
+        "AR",
+        "AU",
+        "AT",
+        "BE",
+        "BR",
+        "CA",
+        "CN",
+        "CO",
+        "HR",
+        "CZ",
+        "DK",
+        "EC",
+        "EG",
+        "ET",
+        "FR",
+        "DE",
+        "GR",
+        "HN",
+        "HK",
+        "HU",
+        "IN",
+        "ID",
+        "IE",
+        "IT",
+        "JM",
+        "MY",
+        "MX",
+        "MA",
+        "NA",
+        "NL",
+        "NZ",
+        "NO",
+        "PL",
+        "PT",
+        "RU",
+        "SN"
+      ]
+    }
+  }
+}

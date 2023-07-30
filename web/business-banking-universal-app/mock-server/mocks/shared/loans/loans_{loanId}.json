@@ -1,0 +1,211 @@
+{
+  "name": "/client-api/v1/loans/{loanId}",
+  "request": {
+    "url": "/client-api/v1/loans/[^/]+(\\?.*)?$",
+    "method": "GET"
+  },
+  "responses": {
+    "badRequest": {
+      "status": 400,
+      "data": {
+        "message": "Bad Request",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Value Exceeded. Must be between {min} and {max}.",
+            "key": "common.api.shoesize",
+            "context": {
+              "max": "50",
+              "min": "1"
+            }
+          }
+        ]
+      }
+    },
+    "forbidden": {
+      "status": 403,
+      "data": {
+        "message": "Access to requested resource denied.",
+        "key": "GENERAL_ERROR",
+        "errors": [
+          {
+            "message": "Resource access denied due to an insufficient user quota of {quota}.",
+            "key": "common.api.quota",
+            "context": {
+              "quota": "someQuota"
+            }
+          }
+        ]
+      }
+    },
+    "systemError": {
+      "status": 500,
+      "data": {
+        "message": "Description of error"
+      }
+    },
+    "success": {
+      "default": true,
+      "status": 200,
+      "data": {
+        "$schema": "../schemas/loan.yaml",
+        "id": "9ed25bae-11eb-4840-b4fc-37bbe2e5f9c9",
+        "loanType": "LineOfCredit",
+        "name": "AnyBank Credit Line 1",
+        "accountNumber": "096010415 000789 CL01",
+        "contractNumber": "ATV-676097",
+        "inArrearsAmount": "100",
+        "loanStatus": "Active",
+        "currencyCode": "USD",
+        "nextRepaymentDate": "2021-09-13T17:00:00.000Z",
+        "nextRepaymentAmount": "200.00000",
+        "availableBalance": "690.37000",
+        "outstandingAmount": "1954.94000",
+        "creditLimit": "2456.98000",
+        "drawnAmount": "1766.61000",
+        "feesDue": "100.00000",
+        "interestDue": "88.33000",
+        "interestRate": "5.00000",
+        "isOverdue": false,
+        "overduePaymentsCount": 0,
+        "branchCode": "001",
+        "startDate": "1996-10-23T17:00:00.000Z",
+        "endDate": "2022-04-16T17:00:00.000Z",
+        "borrower": ["John a. Doen", "M. Joaveni", "Robert Kan", "Kamal Terrell"],
+        "defaultSettlementAccountId": "801b785e-c063-457c-bc12-82386f3ebc2d",
+        "defaultSettlementAccountNumber": "•••• •••• ••• 4568",
+        "defaultSettlementAccountName": "Prestige Operating Account",
+        "documents": [
+          {
+            "documentId": "uid_00001",
+            "name": "Loan Contract",
+            "contentType": "application/pdf"
+          }
+        ],
+        "isFullyRepaid": false,
+        "termUnit": "Year",
+        "termCount": 26,
+        "paymentFrequency": "Bimonthly",
+        "interestPaymentFrequency": "Biweekly",
+        "collateral": [
+          {
+            "type": "Real estate",
+            "currentValue": "100",
+            "currencyCode": "EUR",
+            "specification": "300 Park Avenue 15th Floor, New York, NY 10022",
+            "nextRevaluationDate": "2021-02-28"
+          }
+        ],
+        "escrow": {
+          "totalAmount": "100",
+          "insurance": "50",
+          "fees": "30",
+          "tax": "20",
+          "pmi": "10",
+          "other": "5"
+        },
+        "paymentOptions": {
+          "paymentOptions": [
+            {
+              "name": "LoanPayment",
+              "operationType": "Credit",
+              "allowed": true,
+              "errorCodes": []
+            },
+            {
+              "name": "LoanAdvance",
+              "operationType": "Debit",
+              "allowed": true,
+              "errorCodes": []
+            }
+          ]
+        }
+      }
+    },
+    "success_1": {
+      "status": 200,
+      "data": {
+        "nextRepaymentAmount": "nextRepaymentAmount",
+        "defaultSettlementAccountId": "defaultSettlementAccountId",
+        "loanType": "loanType",
+        "outstandingAmount": "outstandingAmount",
+        "inArrearsDate": "2000-01-23T04:56:07.000+00:00",
+        "endDate": "2000-01-23T04:56:07.000+00:00",
+        "documents": [
+          {
+            "name": "name",
+            "documentId": "documentId",
+            "contentType": "contentType"
+          },
+          {
+            "name": "name",
+            "documentId": "documentId",
+            "contentType": "contentType"
+          }
+        ],
+        "termCount": 6,
+        "availableBalance": "availableBalance",
+        "drawnAmount": "drawnAmount",
+        "paymentOptions": {
+          "paymentOptions": [
+            {
+              "allowed": true,
+              "errorCodes": ["errorCodes", "errorCodes"],
+              "name": "name"
+            },
+            {
+              "allowed": true,
+              "errorCodes": ["errorCodes", "errorCodes"],
+              "name": "name"
+            }
+          ]
+        },
+        "defaultSettlementAccountName": "defaultSettlementAccountName",
+        "nextRepaymentDate": "2000-01-23T04:56:07.000+00:00",
+        "alias": "alias",
+        "creditLimit": "creditLimit",
+        "escrow": {
+          "insurance": "insurance",
+          "totalAmount": "totalAmount",
+          "fees": "fees",
+          "other": "other",
+          "tax": "tax",
+          "pmi": "pmi"
+        },
+        "isFullyRepaid": true,
+        "id": "id",
+        "overduePaymentsCount": 0,
+        "feesDue": "feesDue",
+        "defaultSettlementAccountNumber": "defaultSettlementAccountNumber",
+        "interestRate": "interestRate",
+        "borrower": ["borrower", "borrower"],
+        "contractNumber": "contractNumber",
+        "accountNumber": "accountNumber",
+        "inArrearsAmount": "inArrearsAmount",
+        "branchCode": "branchCode",
+        "isOverdue": true,
+        "interestDue": "interestDue",
+        "name": "name",
+        "collateral": [
+          {
+            "specification": "specification",
+            "nextRevaluationDate": "2000-01-23",
+            "type": "type",
+            "currencyCode": "currencyCode",
+            "currentValue": "currentValue"
+          },
+          {
+            "specification": "specification",
+            "nextRevaluationDate": "2000-01-23",
+            "type": "type",
+            "currencyCode": "currencyCode",
+            "currentValue": "currentValue"
+          }
+        ],
+        "currencyCode": "currencyCode",
+        "paidAmount": "paidAmount",
+        "startDate": "2000-01-23T04:56:07.000+00:00"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div class="bb-tab-container bb-tab-container__tabs nav nav-tabs">
+  <a *ngFor="let tab of tabs$ | async" class="nav-link" role="tab" [routerLink]="[tab.route]" routerLinkActive="active">
+    <span class="bb-stack bb-stack__item bb-stack__item--spacing-xs">{{ tab?.title }}</span>
+  </a>
+</div>
+
+<div class="bb-tab-container__content tab-content" role="tabpanel">
+  <router-outlet></router-outlet>
+</div>
